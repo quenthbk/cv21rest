@@ -1,5 +1,6 @@
 package fr.univ.rouen.cv21rest.dto;
 
+import fr.univ.rouen.cv21rest.validation.Constant;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +20,8 @@ public class OtherDTOTest {
     public void shouldBeValid_whenAllValidParamSet() {
         // GIVEN
         OtherDTO other = new OtherDTO();
-        other.setComment("s".repeat(128));
-        other.setTitre("s".repeat(32));
+        other.setComment("s".repeat(Constant.STRING_COMMENT_MAX));
+        other.setTitre("s".repeat(Constant.STRING_NAME_MAX));
 
         // WHEN
         Set<ConstraintViolation<OtherDTO>> violations =  validator.validate(other);
@@ -57,7 +58,7 @@ public class OtherDTOTest {
         // GIVEN
         OtherDTO other = new OtherDTO();
         other.setComment("string");
-        other.setTitre("s".repeat(33));
+        other.setTitre("s".repeat(Constant.STRING_NAME_MAX + 1));
 
         // WHEN
         Set<ConstraintViolation<OtherDTO>> violations =  validator.validate(other);
@@ -69,7 +70,7 @@ public class OtherDTOTest {
     public void shouldBeInvalid_whenCommentExceed128Char() {
         // GIVEN
         OtherDTO other = new OtherDTO();
-        other.setComment("s".repeat(129));
+        other.setComment("s".repeat(Constant.STRING_COMMENT_MAX + 1));
         other.setTitre("s");
 
         // WHEN

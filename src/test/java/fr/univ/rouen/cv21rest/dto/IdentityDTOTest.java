@@ -2,6 +2,7 @@ package fr.univ.rouen.cv21rest.dto;
 
 import fr.univ.rouen.cv21rest.model.DegreeLevel;
 import fr.univ.rouen.cv21rest.model.Gender;
+import fr.univ.rouen.cv21rest.validation.Constant;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +24,8 @@ public class IdentityDTOTest {
         IdentityDTO value = new IdentityDTO();
         value.setGenre(Gender.WOMAN);
         value.setMel("test@test.com");
-        value.setNom("s".repeat(32));
-        value.setPrenom("s".repeat(32));
+        value.setNom("s".repeat(Constant.STRING_NAME_MAX));
+        value.setPrenom("s".repeat(Constant.STRING_NAME_MAX));
         value.setTel("0606606002");
 
         // WHEN
@@ -38,8 +39,8 @@ public class IdentityDTOTest {
         // GIVEN
         IdentityDTO value = new IdentityDTO();
         value.setGenre(Gender.WOMAN);
-        value.setNom("s".repeat(32));
-        value.setPrenom("s".repeat(32));
+        value.setNom("s".repeat(Constant.STRING_NAME_MAX));
+        value.setPrenom("s".repeat(Constant.STRING_NAME_MAX));
         value.setTel("0606606002");
 
         // WHEN
@@ -54,8 +55,8 @@ public class IdentityDTOTest {
         IdentityDTO value = new IdentityDTO();
         value.setGenre(Gender.WOMAN);
         value.setMel("test@test.com");
-        value.setNom("s".repeat(32));
-        value.setPrenom("s".repeat(32));
+        value.setNom("s".repeat(Constant.STRING_NAME_MAX));
+        value.setPrenom("s".repeat(Constant.STRING_NAME_MAX));
 
         // WHEN
         Set<ConstraintViolation<IdentityDTO>> violations =  validator.validate(value);
@@ -69,8 +70,8 @@ public class IdentityDTOTest {
         IdentityDTO value = new IdentityDTO();
         value.setGenre(Gender.WOMAN);
         value.setMel("test@test.com");
-        value.setNom("s".repeat(32));
-        value.setPrenom("s".repeat(32));
+        value.setNom("s".repeat(Constant.STRING_NAME_MAX));
+        value.setPrenom("s".repeat(Constant.STRING_NAME_MAX));
         value.setTel("060602");
 
         // WHEN
@@ -85,8 +86,8 @@ public class IdentityDTOTest {
         IdentityDTO value = new IdentityDTO();
         value.setGenre(Gender.WOMAN);
         value.setMel("testtest.com");
-        value.setNom("s".repeat(32));
-        value.setPrenom("s".repeat(32));
+        value.setNom("s".repeat(Constant.STRING_NAME_MAX));
+        value.setPrenom("s".repeat(Constant.STRING_NAME_MAX));
         value.setTel("0632060602");
 
         // WHEN
@@ -100,8 +101,8 @@ public class IdentityDTOTest {
         // GIVEN
         IdentityDTO value = new IdentityDTO();
         value.setMel("test@test.com");
-        value.setNom("s".repeat(32));
-        value.setPrenom("s".repeat(32));
+        value.setNom("s".repeat(Constant.STRING_NAME_MAX));
+        value.setPrenom("s".repeat(Constant.STRING_NAME_MAX));
         value.setTel("0632060602");
 
         // WHEN
@@ -116,7 +117,7 @@ public class IdentityDTOTest {
         IdentityDTO value = new IdentityDTO();
         value.setGenre(Gender.WOMAN);
         value.setMel("test@test.com");
-        value.setPrenom("s".repeat(32));
+        value.setPrenom("s".repeat(Constant.STRING_NAME_MAX));
         value.setTel("0632060602");
 
         // WHEN
@@ -131,7 +132,7 @@ public class IdentityDTOTest {
         IdentityDTO value = new IdentityDTO();
         value.setGenre(Gender.WOMAN);
         value.setMel("test@test.com");
-        value.setNom("s".repeat(32));
+        value.setNom("s".repeat(Constant.STRING_NAME_MAX));
         value.setTel("0632060602");
 
         // WHEN
@@ -146,8 +147,8 @@ public class IdentityDTOTest {
         IdentityDTO value = new IdentityDTO();
         value.setGenre(Gender.WOMAN);
         value.setMel("test@test.com");
-        value.setNom("s".repeat(32));
-        value.setPrenom("s".repeat(33));
+        value.setNom("s".repeat(Constant.STRING_NAME_MAX));
+        value.setPrenom("s".repeat(Constant.STRING_NAME_MAX + 1));
         value.setTel("0632060602");
 
         // WHEN
@@ -162,8 +163,8 @@ public class IdentityDTOTest {
         IdentityDTO value = new IdentityDTO();
         value.setGenre(Gender.WOMAN);
         value.setMel("test@test.com");
-        value.setNom("s".repeat(33));
-        value.setPrenom("s".repeat(32));
+        value.setNom("s".repeat(Constant.STRING_NAME_MAX + 1));
+        value.setPrenom("s".repeat(Constant.STRING_NAME_MAX));
         value.setTel("0632060602");
 
         // WHEN
@@ -194,7 +195,7 @@ public class IdentityDTOTest {
         IdentityDTO value = new IdentityDTO();
         value.setGenre(Gender.WOMAN);
         value.setMel("test@test.com");
-        value.setNom("s".repeat(32));
+        value.setNom("s".repeat(Constant.STRING_NAME_MAX));
         value.setPrenom("    ");
         value.setTel("0632060602");
 

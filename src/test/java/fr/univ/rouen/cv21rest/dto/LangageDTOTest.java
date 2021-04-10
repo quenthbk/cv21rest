@@ -2,6 +2,7 @@ package fr.univ.rouen.cv21rest.dto;
 
 import fr.univ.rouen.cv21rest.model.Certification;
 import fr.univ.rouen.cv21rest.model.LanguageLevel;
+import fr.univ.rouen.cv21rest.validation.Constant;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -127,7 +128,7 @@ public class LangageDTOTest {
         language.setCert(Certification.CLES);
         language.setNivi(990);
         language.setNivs(LanguageLevel.A1);
-        language.setLang("s".repeat(33));
+        language.setLang("s".repeat(Constant.STRING_NAME_MAX + 1));
 
         // WHEN
         Set<ConstraintViolation<LanguageDTO>> violations =  validator.validate(language);

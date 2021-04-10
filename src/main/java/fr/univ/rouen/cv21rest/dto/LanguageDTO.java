@@ -4,7 +4,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import fr.univ.rouen.cv21rest.model.Certification;
 import fr.univ.rouen.cv21rest.model.LanguageLevel;
-import fr.univ.rouen.cv21rest.validation.Validator;
+import fr.univ.rouen.cv21rest.validation.Constant;
 
 import javax.validation.constraints.*;
 
@@ -12,7 +12,7 @@ import javax.validation.constraints.*;
 public class LanguageDTO {
     @JacksonXmlProperty(isAttribute = true)
     @NotBlank
-    @Size(max = Validator.STRING_NAME_MAX)
+    @Size(max = Constant.STRING_NAME_MAX)
     private String lang;
 
     @JacksonXmlProperty(isAttribute = true)

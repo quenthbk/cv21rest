@@ -3,7 +3,7 @@ package fr.univ.rouen.cv21rest.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
-import fr.univ.rouen.cv21rest.validation.Validator;
+import fr.univ.rouen.cv21rest.validation.Constant;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -25,7 +25,7 @@ public class ExperienceDTO {
 
     @JacksonXmlProperty
     @NotBlank
-    @Size(max = Validator.STRING_COMMENT_MAX)
+    @Size(max = Constant.STRING_COMMENT_MAX)
     private String titre;
 
     public ExperienceDTO() {

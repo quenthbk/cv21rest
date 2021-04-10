@@ -1,5 +1,6 @@
 package fr.univ.rouen.cv21rest.dto;
 
+import fr.univ.rouen.cv21rest.validation.Constant;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class ExperienceDTOTest {
         ExperienceDTO value = new ExperienceDTO();
         value.setDatedeb(LocalDate.now());
         value.setDatefin(LocalDate.now());
-        value.setTitre("s".repeat(128));
+        value.setTitre("s".repeat(Constant.STRING_COMMENT_MAX));
 
         // WHEN
         Set<ConstraintViolation<ExperienceDTO>> violations =  validator.validate(value);
@@ -35,7 +36,7 @@ public class ExperienceDTOTest {
         // GIVEN
         ExperienceDTO value = new ExperienceDTO();
         value.setDatefin(LocalDate.now());
-        value.setTitre("s".repeat(128));
+        value.setTitre("s".repeat(Constant.STRING_COMMENT_MAX));
 
         // WHEN
         Set<ConstraintViolation<ExperienceDTO>> violations =  validator.validate(value);
@@ -48,7 +49,7 @@ public class ExperienceDTOTest {
         // GIVEN
         ExperienceDTO value = new ExperienceDTO();
         value.setDatedeb(LocalDate.now());
-        value.setTitre("s".repeat(128));
+        value.setTitre("s".repeat(Constant.STRING_COMMENT_MAX));
 
         // WHEN
         Set<ConstraintViolation<ExperienceDTO>> violations =  validator.validate(value);
@@ -75,7 +76,7 @@ public class ExperienceDTOTest {
         ExperienceDTO value = new ExperienceDTO();
         value.setDatedeb(LocalDate.now());
         value.setDatefin(LocalDate.now());
-        value.setTitre("s".repeat(129));
+        value.setTitre("s".repeat(Constant.STRING_COMMENT_MAX + 1));
 
         // WHEN
         Set<ConstraintViolation<ExperienceDTO>> violations =  validator.validate(value);

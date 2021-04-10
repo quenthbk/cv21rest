@@ -3,7 +3,7 @@ package fr.univ.rouen.cv21rest.dto;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import fr.univ.rouen.cv21rest.model.Gender;
-import fr.univ.rouen.cv21rest.validation.Validator;
+import fr.univ.rouen.cv21rest.validation.Constant;
 
 import javax.validation.constraints.*;
 
@@ -15,16 +15,16 @@ public class IdentityDTO {
 
     @JacksonXmlProperty
     @NotBlank
-    @Size(max = Validator.STRING_NAME_MAX)
+    @Size(max = Constant.STRING_NAME_MAX)
     private String nom;
 
     @JacksonXmlProperty
     @NotBlank
-    @Size(max = Validator.STRING_NAME_MAX)
+    @Size(max = Constant.STRING_NAME_MAX)
     private String prenom;
 
     @JacksonXmlProperty
-    @Pattern(regexp = Validator.PHONE_NUMBER_REGEX)
+    @Pattern(regexp = Constant.PHONE_NUMBER_REGEX)
     private String tel;
 
     @JacksonXmlProperty

@@ -1,6 +1,7 @@
 package fr.univ.rouen.cv21rest.dto;
 
 import fr.univ.rouen.cv21rest.model.DegreeLevel;
+import fr.univ.rouen.cv21rest.validation.Constant;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +23,8 @@ public class DegreeDTOTest {
         // GIVEN
         DegreeDTO value = new DegreeDTO();
         value.setDate(LocalDate.now());
-        value.setTitre("s".repeat(32));
-        value.setEtab("s".repeat(32));
+        value.setTitre("s".repeat(Constant.STRING_NAME_MAX));
+        value.setEtab("s".repeat(Constant.STRING_NAME_MAX));
         value.setNiveau(DegreeLevel.I);
 
         // WHEN
@@ -37,8 +38,8 @@ public class DegreeDTOTest {
         // GIVEN
         DegreeDTO value = new DegreeDTO();
         value.setDate(LocalDate.now());
-        value.setTitre("s".repeat(33));
-        value.setEtab("s".repeat(32));
+        value.setTitre("s".repeat(Constant.STRING_NAME_MAX + 1));
+        value.setEtab("s".repeat(Constant.STRING_NAME_MAX));
         value.setNiveau(DegreeLevel.I);
 
         // WHEN
@@ -52,8 +53,8 @@ public class DegreeDTOTest {
         // GIVEN
         DegreeDTO value = new DegreeDTO();
         value.setDate(LocalDate.now());
-        value.setTitre("s".repeat(32));
-        value.setEtab("s".repeat(33));
+        value.setTitre("s".repeat(Constant.STRING_NAME_MAX));
+        value.setEtab("s".repeat(Constant.STRING_NAME_MAX + 1));
         value.setNiveau(DegreeLevel.I);
 
         // WHEN
@@ -67,7 +68,7 @@ public class DegreeDTOTest {
         // GIVEN
         DegreeDTO value = new DegreeDTO();
         value.setDate(LocalDate.now());
-        value.setTitre("s".repeat(32));
+        value.setTitre("s".repeat(Constant.STRING_NAME_MAX));
         value.setNiveau(DegreeLevel.I);
 
         // WHEN
@@ -81,7 +82,7 @@ public class DegreeDTOTest {
         // GIVEN
         DegreeDTO value = new DegreeDTO();
         value.setDate(LocalDate.now());
-        value.setEtab("s".repeat(32));
+        value.setEtab("s".repeat(Constant.STRING_NAME_MAX));
         value.setNiveau(DegreeLevel.I);
 
         // WHEN
@@ -94,8 +95,8 @@ public class DegreeDTOTest {
     public void shouldBeInvalid_whenDateIsNotSet() {
         // GIVEN
         DegreeDTO value = new DegreeDTO();
-        value.setTitre("s".repeat(32));
-        value.setEtab("s".repeat(32));
+        value.setTitre("s".repeat(Constant.STRING_NAME_MAX));
+        value.setEtab("s".repeat(Constant.STRING_NAME_MAX));
         value.setNiveau(DegreeLevel.I);
 
         // WHEN
@@ -109,8 +110,8 @@ public class DegreeDTOTest {
         // GIVEN
         DegreeDTO value = new DegreeDTO();
         value.setDate(LocalDate.now());
-        value.setTitre("s".repeat(32));
-        value.setEtab("s".repeat(32));
+        value.setTitre("s".repeat(Constant.STRING_NAME_MAX));
+        value.setEtab("s".repeat(Constant.STRING_NAME_MAX));
 
         // WHEN
         Set<ConstraintViolation<DegreeDTO>> violations =  validator.validate(value);
