@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:cv21 xmlns:p="http://univ.fr/cv21" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://univ.fr/cv21 cv21.xsd ">
+  <identite>
+    <genre>M</genre>
+    <nom>nom</nom>
+    <prenom>prenom</prenom>
+  </identite>
+  <objectif>objectif</objectif>
+  <prof>
+    <expe>
+      <datedeb>2001-01-01</datedeb>
+      <datefin>2001-01-01</datefin>
+      <titre>titre</titre>
+    </expe>
+  </prof>
+  <competences>
+    <diplôme>
+      <date>2001-01-01</date>
+      <titre>titre</titre>
+      <etab>etab</etab>
+    </diplôme>
+  </competences>
+  <divers>
+    <lv>lv</lv>
+  </divers>
+</p:cv21>
