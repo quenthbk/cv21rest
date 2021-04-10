@@ -4,7 +4,7 @@
     <nom>string</nom>
     <prenom>string</prenom>
     <!--Optional:-->
-    <tel>6</tel>
+    <tel>0643351725</tel>
     <!--Optional:-->
     <mel>email@email.com</mel>
   </identite>
@@ -13,7 +13,7 @@
     <!--1 or more repetitions:-->
     <expe>
       <datedeb>2013-11-23</datedeb>
-      <datefin>2014-06-09+02:00</datefin>
+      <datefin>2014-06-09</datefin>
       <titre>string</titre>
     </expe>
   </prof>
@@ -26,9 +26,9 @@
     </diplôme>
     <!--Zero or more repetitions:-->
     <certif>
-      <datedeb>2003-08-09+02:00</datedeb>
+      <datedeb>2003-08-09</datedeb>
       <!--Optional:-->
-      <datefin>2012-09-13+02:00</datefin>
+      <datefin>2012-09-13</datefin>
       <titre>string</titre>
     </certif>
   </competences>

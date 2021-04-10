@@ -1,46 +1,45 @@
 package fr.univ.rouen.cv21rest.dto;
 
-import org.springframework.cglib.transform.ClassVisitorTee;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+import fr.univ.rouen.cv21rest.model.Objective;
 
-import javax.xml.bind.annotation.*;
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.List;
 
-@XmlRootElement(name = "cv")
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@JacksonXmlRootElement(localName = "cv21")
 public class CVDTO implements Serializable {
     private static final long SerialVersionUID = 1L;
 
+    @JsonIgnore
     private long id;
 
-    @XmlElement
+    @JacksonXmlProperty
+    @Valid
+    @NotNull
     private IdentityDTO identite;
 
-    @XmlElement
-    private List<ExperienceDTO> prof;
+    @JacksonXmlProperty(isAttribute = true)
+    private Objective objectif;
 
-    @XmlElement
-    private List<DegreeDTO> competences;
+    @JacksonXmlProperty
+    @Valid
+    @NotEmpty
+    private List<@Valid ExperienceDTO> prof;
 
-    @XmlElement
-    private List<VariousDTO> divers;
+    @JacksonXmlProperty
+    @Valid
+    @NotNull
+    private CompetencesDTO competences;
 
-    public CVDTO() {
-
-    }
-
-    public CVDTO(IdentityDTO identite, List<ExperienceDTO> prof, List<DegreeDTO> competences, List<VariousDTO> divers) {
-        this.identite = identite;
-        this.prof = prof;
-        this.competences = competences;
-        this.divers = divers;
-    }
-
-    public CVDTO(long id, IdentityDTO identite, List<ExperienceDTO> prof, List<DegreeDTO> competences,
-                 List<VariousDTO> divers) {
-        this(identite, prof, competences, divers);
-        this.id = id;
-    }
+    @JacksonXmlProperty
+    @Valid
+    @NotNull
+    private VariousDTO divers;
 
     public long getId() {
         return id;
@@ -66,19 +65,43 @@ public class CVDTO implements Serializable {
         this.prof = prof;
     }
 
-    public List<DegreeDTO> getCompetences() {
-        return competences;
+    public static long getSerialVersionUID() {
+        return SerialVersionUID;
     }
 
-    public void setCompetences(List<DegreeDTO> competences) {
-        this.competences = competences;
-    }
-
-    public List<VariousDTO> getDivers() {
+    public VariousDTO getDivers() {
         return divers;
     }
 
-    public void setDivers(List<VariousDTO> divers) {
+    public void setDivers(VariousDTO divers) {
         this.divers = divers;
+    }
+
+    public Objective getObjectif() {
+        return objectif;
+    }
+
+    public void setObjectif(Objective objectif) {
+        this.objectif = objectif;
+    }
+
+    public CompetencesDTO getCompetences() {
+        return competences;
+    }
+
+    public void setCompetences(CompetencesDTO competences) {
+        this.competences = competences;
+    }
+
+    @Override
+    public String toString() {
+        return "CVDTO{" +
+                "id=" + id +
+                ", identite=" + identite +
+                ", objectif=" + objectif +
+                ", prof=" + prof +
+                ", competences=" + competences +
+                ", divers=" + divers +
+                '}';
     }
 }

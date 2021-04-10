@@ -7,12 +7,14 @@
 	  	</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="tel">
-	  	<xs:list itemType="xs:unsignedByte" />
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]{10}"/>
+		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="mel">
-	 	<xs:restriction base="xs:string">
-	    	<xs:pattern value="(.)+@(.)+" />
-	 	</xs:restriction>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})"/>
+		</xs:restriction>
 	</xs:simpleType>
 	<xs:element name="cv21">
 		<xs:complexType>

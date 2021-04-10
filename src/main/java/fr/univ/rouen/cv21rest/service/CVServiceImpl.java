@@ -1,6 +1,7 @@
 package fr.univ.rouen.cv21rest.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import fr.univ.rouen.cv21rest.dto.CVDTO;
 import fr.univ.rouen.cv21rest.exception.CVParserException;
 import fr.univ.rouen.cv21rest.exception.InvalidCVException;
@@ -11,12 +12,19 @@ import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 @Service
 public class CVServiceImpl implements CVService {
-    @Autowired
-    private ObjectMapper mapper;
+    //@Autowired
+    private final XmlMapper mapper;
+
+    public CVServiceImpl() {
+        mapper = new XmlMapper();
+        mapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd"));
+    }
 
     @Autowired
     private CVParser cvParser;
@@ -59,6 +67,7 @@ public class CVServiceImpl implements CVService {
     private boolean xmlCVIsValid(CVDTO cv) {
         try {
             byte[] bytes = mapper.writeValueAsBytes(cv);
+            System.out.println(mapper.writeValueAsString(cv));
             InputStream in = new ByteArrayInputStream(bytes);
             return cvParser.isValid(in);
         } catch (SAXException | IOException e) {

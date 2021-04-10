@@ -1,5 +1,6 @@
 package fr.univ.rouen.cv21rest.util;
 
+import com.sun.istack.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
@@ -23,14 +24,14 @@ public class CVParser {
     private final SAXParser parser;
 
     @Autowired
-    public CVParser(ResourceLoader resourceLoader) throws ParserConfigurationException, SAXException {
+    public CVParser(@NotNull ResourceLoader resourceLoader) throws ParserConfigurationException, SAXException, IOException {
         SAXParserFactory spf = SAXParserFactory.newInstance();
         spf.setNamespaceAware(true);
         spf.setValidating(true);
         parser = spf.newSAXParser();
         Resource r = resourceLoader.getResource("cv21.xsd");
         parser.setProperty(JAXP_SCHEMA_LANGUAGE, W3C_XML_SCHEMA);
-        parser.setProperty(JAXP_SCHEMA_SOURCE, r);
+        parser.setProperty(JAXP_SCHEMA_SOURCE, r.getFile());
     }
 
     public boolean isValid(InputStream xml) throws IOException, SAXException {

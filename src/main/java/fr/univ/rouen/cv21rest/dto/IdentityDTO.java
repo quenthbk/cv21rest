@@ -1,28 +1,34 @@
 package fr.univ.rouen.cv21rest.dto;
 
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import fr.univ.rouen.cv21rest.model.Gender;
+import fr.univ.rouen.cv21rest.validation.Validator;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.validation.constraints.*;
 
-@XmlRootElement(name = "identite")
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@JacksonXmlRootElement(localName = "identite")
 public class IdentityDTO {
-    @XmlElement
+    @JacksonXmlProperty
+    @NotNull
     private Gender genre;
 
-    @XmlElement
+    @JacksonXmlProperty
+    @NotBlank
+    @Size(max = Validator.STRING_NAME_MAX)
     private String nom;
 
-    @XmlElement
+    @JacksonXmlProperty
+    @NotBlank
+    @Size(max = Validator.STRING_NAME_MAX)
     private String prenom;
 
-    @XmlElement
+    @JacksonXmlProperty
+    @Pattern(regexp = Validator.PHONE_NUMBER_REGEX)
     private String tel;
 
-    @XmlElement
+    @JacksonXmlProperty
+    @Email
     private String mel;
 
     public Gender getGenre() {
@@ -63,5 +69,16 @@ public class IdentityDTO {
 
     public void setMel(String mel) {
         this.mel = mel;
+    }
+
+    @Override
+    public String toString() {
+        return "IdentityDTO{" +
+                "genre=" + genre +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", tel='" + tel + '\'' +
+                ", mel='" + mel + '\'' +
+                '}';
     }
 }

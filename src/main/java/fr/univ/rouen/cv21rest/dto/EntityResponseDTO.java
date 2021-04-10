@@ -1,19 +1,18 @@
 package fr.univ.rouen.cv21rest.dto;
 
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import fr.univ.rouen.cv21rest.model.CVStatus;
-
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
 
-@XmlRootElement(name = "response")
-@XmlAccessorType(XmlAccessType.PROPERTY)
-public class EntityResponseDTO {
-    @XmlElement
+
+@JacksonXmlRootElement(localName = "response")
+public class EntityResponseDTO implements Serializable {
+    @JacksonXmlProperty
     private long id;
 
-    @XmlElement
+    @JacksonXmlProperty
     private CVStatus status;
 
     public EntityResponseDTO(long id, CVStatus status) {
@@ -35,5 +34,13 @@ public class EntityResponseDTO {
 
     public void setStatus(CVStatus status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "EntityResponseDTO{" +
+                "id=" + id +
+                ", status=" + status +
+                '}';
     }
 }

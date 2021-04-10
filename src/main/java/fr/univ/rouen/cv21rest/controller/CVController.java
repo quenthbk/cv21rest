@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -51,12 +52,13 @@ public class CVController {
     //      POST
     // --------------------------------------------------------------------
 
-    @PostMapping(value = "/insert", consumes = MediaType.APPLICATION_XML_VALUE,
+    @PostMapping(value = "/insert", consumes = MediaType.APPLICATION_XML_VALUE+ ";charset=UTF-8",
             produces = MediaType.APPLICATION_XML_VALUE)
     @ResponseStatus(value = HttpStatus.CREATED)
-    public EntityResponseDTO insert(@RequestBody CVDTO cv) {
-        CVDTO cvSaved =  service.create(cv);
-        return new EntityResponseDTO(cvSaved.getId(), CVStatus.INSERTED);
+    public CVDTO insert(@Valid @RequestBody CVDTO cv) {
+        //CVDTO cvSaved =  service.create(cv);
+        System.out.println(cv);
+        return cv; //new EntityResponseDTO(cvSaved.getId(), CVStatus.INSERTED);
     }
 
     // --------------------------------------------------------------------
@@ -75,7 +77,7 @@ public class CVController {
 
     @PutMapping(value = "/update", consumes = MediaType.APPLICATION_XML_VALUE,
             produces = MediaType.APPLICATION_XML_VALUE)
-    public EntityResponseDTO update(@RequestParam long id, @RequestBody CVDTO cv) {
+    public EntityResponseDTO update(@RequestParam long id, @Valid @RequestBody CVDTO cv) {
         return new EntityResponseDTO(id, CVStatus.UPDATED);
     }
 }

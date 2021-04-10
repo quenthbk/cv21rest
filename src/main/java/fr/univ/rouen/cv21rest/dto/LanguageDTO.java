@@ -1,28 +1,31 @@
 package fr.univ.rouen.cv21rest.dto;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import fr.univ.rouen.cv21rest.model.Certification;
 import fr.univ.rouen.cv21rest.model.LanguageLevel;
+import fr.univ.rouen.cv21rest.validation.Validator;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.validation.constraints.*;
 
-@XmlRootElement(name = "lv")
-@XmlAccessorType(XmlAccessType.PROPERTY)
-public class LanguageDTO implements VariousDTO {
-    @XmlAttribute
+@JacksonXmlRootElement(localName = "lv")
+public class LanguageDTO {
+    @JacksonXmlProperty(isAttribute = true)
+    @NotBlank
+    @Size(max = Validator.STRING_NAME_MAX)
     private String lang;
 
-    @XmlAttribute
+    @JacksonXmlProperty(isAttribute = true)
+    @NotNull
     private Certification cert;
 
-    @XmlAttribute
+    @JacksonXmlProperty(isAttribute = true)
+    @NotNull
     private LanguageLevel nivs;
 
-    @XmlAttribute
+    @JacksonXmlProperty(isAttribute = true)
+    @Min(10)
+    @Max(990)
     private Integer nivi;
 
     public LanguageDTO() {
@@ -66,5 +69,15 @@ public class LanguageDTO implements VariousDTO {
 
     public void setNivi(Integer nivi) {
         this.nivi = nivi;
+    }
+
+    @Override
+    public String toString() {
+        return "LanguageDTO{" +
+                "lang='" + lang + '\'' +
+                ", cert=" + cert +
+                ", nivs=" + nivs +
+                ", nivi=" + nivi +
+                '}';
     }
 }

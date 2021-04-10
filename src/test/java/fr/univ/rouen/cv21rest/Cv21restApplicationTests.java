@@ -25,11 +25,10 @@ class Cv21restApplicationTests {
 	}
 
 	@Test
-	void test_with_sax() throws IOException, SAXException, ParserConfigurationException {
-		Resource r = loader.getResource("cv21.tp1.xml");
-		if (cvParser.isValid(r.getInputStream())) {
-			throw new SAXException("error");
+	void test_with_sax() throws IOException, SAXException {
+		Resource r = loader.getResource("cv21.2.xml");
+		if (! cvParser.isValid(r.getInputStream())) {
+			throw new SAXException("not valid file");
 		}
 	}
-
 }

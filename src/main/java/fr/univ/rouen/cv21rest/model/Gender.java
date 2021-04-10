@@ -1,12 +1,12 @@
 package fr.univ.rouen.cv21rest.model;
 
-import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public enum Gender {
 
-    @JsonAlias("M")
+    @JsonProperty("M")
     MAN("M"),
-    @JsonAlias("Mme")
+    @JsonProperty("Mme")
     WOMAN("Mme");
 
     private final String value;
@@ -17,5 +17,12 @@ public enum Gender {
 
     public String getValue() {
         return value;
+    }
+
+    @Override
+    public String toString() {
+        return "Gender{" +
+                "value='" + value + '\'' +
+                '}';
     }
 }

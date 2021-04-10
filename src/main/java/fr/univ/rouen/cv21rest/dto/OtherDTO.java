@@ -1,21 +1,24 @@
 package fr.univ.rouen.cv21rest.dto;
 
-import com.fasterxml.jackson.annotation.JsonAlias;
-import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+import fr.univ.rouen.cv21rest.validation.Validator;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
-@XmlRootElement(name = "autre")
-@XmlAccessorType(XmlAccessType.PROPERTY)
-public class OtherDTO implements VariousDTO {
+@JacksonXmlRootElement(localName = "autre")
+public class OtherDTO {
 
-    @XmlAttribute
+    @JacksonXmlProperty(isAttribute = true)
+    @NotBlank
+    @Size(max = Validator.STRING_NAME_MAX)
     private String titre;
 
-    @XmlAttribute
+    @JacksonXmlProperty(isAttribute = true)
+    @NotBlank
+    @Size(max = Validator.STRING_COMMENT_MAX)
     private String comment;
 
     public OtherDTO() {
@@ -41,5 +44,13 @@ public class OtherDTO implements VariousDTO {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    @Override
+    public String toString() {
+        return "OtherDTO{" +
+                "titre='" + titre + '\'' +
+                ", comment='" + comment + '\'' +
+                '}';
     }
 }

@@ -9,5 +9,4 @@ public class Cv21restApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(Cv21restApplication.class, args);
 	}
-
 }

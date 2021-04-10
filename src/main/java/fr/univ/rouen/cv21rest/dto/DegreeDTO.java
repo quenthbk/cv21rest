@@ -1,24 +1,34 @@
 package fr.univ.rouen.cv21rest.dto;
 
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import fr.univ.rouen.cv21rest.model.DegreeLevel;
+import fr.univ.rouen.cv21rest.validation.Validator;
 
-import javax.xml.bind.annotation.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.time.LocalDate;
 
-@XmlRootElement(name = "diplôme")
-@XmlAccessorType(XmlAccessType.PROPERTY)
-public class DegreeDTO {
+@JacksonXmlRootElement(localName = "diplôme")
+public class DegreeDTO implements Serializable {
 
-    @XmlAttribute
+    @JacksonXmlProperty(isAttribute = true)
+    @NotNull
     private DegreeLevel niveau;
 
-    @XmlElement
+    @JacksonXmlProperty
+    @NotNull
     private LocalDate date;
 
-    @XmlElement
+    @JacksonXmlProperty
+    @NotNull
+    @Size(max = Validator.STRING_NAME_MAX)
     private String titre;
 
-    @XmlElement
+    @JacksonXmlProperty
+    @NotNull
+    @Size(max = Validator.STRING_NAME_MAX)
     private String etab;
 
     public DegreeDTO() {
@@ -62,5 +72,15 @@ public class DegreeDTO {
 
     public void setEtab(String etab) {
         this.etab = etab;
+    }
+
+    @Override
+    public String toString() {
+        return "DegreeDTO{" +
+                "niveau=" + niveau +
+                ", date=" + date +
+                ", titre='" + titre + '\'' +
+                ", etab='" + etab + '\'' +
+                '}';
     }
 }
