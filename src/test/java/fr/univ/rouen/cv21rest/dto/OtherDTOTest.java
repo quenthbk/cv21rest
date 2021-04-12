@@ -21,7 +21,7 @@ public class OtherDTOTest {
         // GIVEN
         OtherDTO other = new OtherDTO();
         other.setComment("s".repeat(Constant.STRING_COMMENT_MAX));
-        other.setTitre("s".repeat(Constant.STRING_NAME_MAX));
+        other.setTitle("s".repeat(Constant.STRING_NAME_MAX));
 
         // WHEN
         Set<ConstraintViolation<OtherDTO>> violations =  validator.validate(other);
@@ -33,7 +33,7 @@ public class OtherDTOTest {
     public void shouldBeInvalid_whenCommentIsNotSet() {
         // GIVEN
         OtherDTO other = new OtherDTO();
-        other.setTitre("string");
+        other.setTitle("string");
 
         // WHEN
         Set<ConstraintViolation<OtherDTO>> violations =  validator.validate(other);
@@ -58,7 +58,7 @@ public class OtherDTOTest {
         // GIVEN
         OtherDTO other = new OtherDTO();
         other.setComment("string");
-        other.setTitre("s".repeat(Constant.STRING_NAME_MAX + 1));
+        other.setTitle("s".repeat(Constant.STRING_NAME_MAX + 1));
 
         // WHEN
         Set<ConstraintViolation<OtherDTO>> violations =  validator.validate(other);
@@ -71,7 +71,7 @@ public class OtherDTOTest {
         // GIVEN
         OtherDTO other = new OtherDTO();
         other.setComment("s".repeat(Constant.STRING_COMMENT_MAX + 1));
-        other.setTitre("s");
+        other.setTitle("s");
 
         // WHEN
         Set<ConstraintViolation<OtherDTO>> violations =  validator.validate(other);
@@ -84,7 +84,7 @@ public class OtherDTOTest {
         // GIVEN
         OtherDTO other = new OtherDTO();
         other.setComment("     ");
-        other.setTitre("s");
+        other.setTitle("s");
 
         // WHEN
         Set<ConstraintViolation<OtherDTO>> violations =  validator.validate(other);
@@ -97,7 +97,7 @@ public class OtherDTOTest {
         // GIVEN
         OtherDTO other = new OtherDTO();
         other.setComment("  fg   ");
-        other.setTitre("          ");
+        other.setTitle("          ");
 
         // WHEN
         Set<ConstraintViolation<OtherDTO>> violations =  validator.validate(other);

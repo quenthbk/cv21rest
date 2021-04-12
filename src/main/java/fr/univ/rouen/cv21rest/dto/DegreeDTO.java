@@ -13,41 +13,41 @@ import java.time.LocalDate;
 @JacksonXmlRootElement(localName = "diplôme")
 public class DegreeDTO implements Serializable {
 
-    @JacksonXmlProperty(isAttribute = true)
+    @JacksonXmlProperty(isAttribute = true, localName = "niveau")
     @NotNull
-    private DegreeLevel niveau;
+    private DegreeLevel level;
 
-    @JacksonXmlProperty
+    @JacksonXmlProperty(localName = "date")
     @NotNull
     private LocalDate date;
 
-    @JacksonXmlProperty
+    @JacksonXmlProperty(localName = "titre")
     @NotNull
     @Size(max = Constant.STRING_NAME_MAX)
-    private String titre;
+    private String title;
 
-    @JacksonXmlProperty
+    @JacksonXmlProperty(localName = "etab")
     @NotNull
     @Size(max = Constant.STRING_NAME_MAX)
-    private String etab;
+    private String institution;
 
     public DegreeDTO() {
 
     }
 
-    public DegreeDTO(DegreeLevel niveau, LocalDate date, String titre, String etab) {
-        this.niveau = niveau;
+    public DegreeDTO(DegreeLevel level, LocalDate date, String title, String institution) {
+        this.level = level;
         this.date = date;
-        this.titre = titre;
-        this.etab = etab;
+        this.title = title;
+        this.institution = institution;
     }
 
-    public DegreeLevel getNiveau() {
-        return niveau;
+    public DegreeLevel getLevel() {
+        return level;
     }
 
-    public void setNiveau(DegreeLevel niveau) {
-        this.niveau = niveau;
+    public void setLevel(DegreeLevel level) {
+        this.level = level;
     }
 
     public LocalDate getDate() {
@@ -58,29 +58,29 @@ public class DegreeDTO implements Serializable {
         this.date = date;
     }
 
-    public String getTitre() {
-        return titre;
+    public String getTitle() {
+        return title;
     }
 
-    public void setTitre(String titre) {
-        this.titre = titre;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getEtab() {
-        return etab;
+    public String getInstitution() {
+        return institution;
     }
 
-    public void setEtab(String etab) {
-        this.etab = etab;
+    public void setInstitution(String institution) {
+        this.institution = institution;
     }
 
     @Override
     public String toString() {
         return "DegreeDTO{" +
-                "niveau=" + niveau +
+                "niveau=" + level +
                 ", date=" + date +
-                ", titre='" + titre + '\'' +
-                ", etab='" + etab + '\'' +
+                ", titre='" + title + '\'' +
+                ", etab='" + institution + '\'' +
                 '}';
     }
 }

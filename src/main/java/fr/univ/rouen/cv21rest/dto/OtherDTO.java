@@ -10,12 +10,12 @@ import javax.validation.constraints.Size;
 @JacksonXmlRootElement(localName = "autre")
 public class OtherDTO {
 
-    @JacksonXmlProperty(isAttribute = true)
+    @JacksonXmlProperty(isAttribute = true, localName = "titre")
     @NotBlank
     @Size(max = Constant.STRING_NAME_MAX)
-    private String titre;
+    private String title;
 
-    @JacksonXmlProperty(isAttribute = true)
+    @JacksonXmlProperty(isAttribute = true, localName = "comment")
     @NotBlank
     @Size(max = Constant.STRING_COMMENT_MAX)
     private String comment;
@@ -24,17 +24,17 @@ public class OtherDTO {
 
     }
 
-    public OtherDTO(String titre, String comment) {
-        this.titre = titre;
+    public OtherDTO(String title, String comment) {
+        this.title = title;
         this.comment = comment;
     }
 
-    public String getTitre() {
-        return titre;
+    public String getTitle() {
+        return title;
     }
 
-    public void setTitre(String titre) {
-        this.titre = titre;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getComment() {
@@ -48,7 +48,7 @@ public class OtherDTO {
     @Override
     public String toString() {
         return "OtherDTO{" +
-                "titre='" + titre + '\'' +
+                "titre='" + title + '\'' +
                 ", comment='" + comment + '\'' +
                 '}';
     }

@@ -3,28 +3,29 @@ package fr.univ.rouen.cv21rest.controller;
 import fr.univ.rouen.cv21rest.exception.CVNotFoundException;
 import fr.univ.rouen.cv21rest.exception.ErrorResponse;
 import fr.univ.rouen.cv21rest.exception.InvalidCVException;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ControllerAdvice
 public class ErrorHandlerController {
 
     @ExceptionHandler(CVNotFoundException.class)
-    @ResponseStatus(value = HttpStatus.NOT_FOUND)
-    public ErrorResponse CVNotFoundExceptionHandler(String message) {
-        return buildErrorResponse(message);
+    public ResponseEntity<ErrorResponse> CVNotFoundExceptionHandler(Exception e) {
+        return buildErrorResponse(e.getMessage(), HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(InvalidCVException.class)
-    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
-    public ErrorResponse InvalidCVExceptionHandler(String message) {
-        return buildErrorResponse(message);
+    public ResponseEntity<ErrorResponse> InvalidCVExceptionHandler(Exception e) {
+        return buildErrorResponse(e.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
-
-    private ErrorResponse buildErrorResponse(String message) {
-        return new ErrorResponse(message);
+    private ResponseEntity<ErrorResponse> buildErrorResponse(String message, HttpStatus status) {
+        return ResponseEntity.status(status)
+                .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_XML_VALUE)
+                .body(new ErrorResponse(message));
     }
 }

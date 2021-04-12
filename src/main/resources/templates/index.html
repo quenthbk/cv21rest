@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <title>Service Rest CV</title>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+    <img src="/images/logo.png" width="300px">
+    <table>
+        <tr>
+            <td>Nom du projet :</td>
+            <td><span th:text="${name}"></span></td>
+        </tr>
+        <tr>
+            <td>Version:</td>
+            <td><span th:text="${version}"></span></td>
+        </tr>
+        <tr>
+            <td>Auteur:</td>
+            <td>Quentin Holubeik</td>
+        </tr>
+    </table>
+</body>
+</html>

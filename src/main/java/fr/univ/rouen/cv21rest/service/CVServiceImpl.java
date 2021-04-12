@@ -3,8 +3,11 @@ package fr.univ.rouen.cv21rest.service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import fr.univ.rouen.cv21rest.dto.CVDTO;
+import fr.univ.rouen.cv21rest.exception.CVNotFoundException;
 import fr.univ.rouen.cv21rest.exception.CVParserException;
 import fr.univ.rouen.cv21rest.exception.InvalidCVException;
+import fr.univ.rouen.cv21rest.model.CV;
+import fr.univ.rouen.cv21rest.repository.CVRepository;
 import fr.univ.rouen.cv21rest.util.CVParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,63 +18,53 @@ import java.io.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class CVServiceImpl implements CVService {
-    //@Autowired
-    private final XmlMapper mapper;
 
-    public CVServiceImpl() {
-        mapper = new XmlMapper();
-        mapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd"));
-    }
+
+    private final CVRepository repository;
 
     @Autowired
-    private CVParser cvParser;
-
-    @Override
-    public List<CVDTO> getAll() {
-        return null;
+    public CVServiceImpl(CVRepository repository) {
+        this.repository = repository;
     }
 
     @Override
-    public CVDTO getById(long id) {
-        return null;
+    public List<CV> getAll() {
+        return repository.findAll();
     }
 
     @Override
-    public CVDTO create(CVDTO cv) {
-        if(! xmlCVIsValid(cv)) {
-            throw new InvalidCVException("Le cv ne respecte pas le schema spécifié par le xsd");
+    public CV getById(String id) {
+        Optional<CV> cv =  repository.findById(id);
+        if (cv.isEmpty()) {
+            throw new CVNotFoundException("Le CV est introuvable");
         }
-
-        // SAVE CV
-        return cv;
+        return cv.get();
     }
 
     @Override
-    public CVDTO update(long id, CVDTO cv) {
-        if(! xmlCVIsValid(cv)) {
-            throw new InvalidCVException("Le cv ne respecte pas le schema spécifié par le xsd");
-        }
-
-        // SAVE CV
-        return null;
+    public CV create(CV cv) {
+        return repository.save(cv);
     }
 
     @Override
-    public void delete(long id) {
-
+    public CV update(String id, CV cv) {
+        if (repository.existsById(id)) {
+            cv.setId(id);
+            return repository.save(cv);
+        }
+        throw new CVNotFoundException("Le CV est introuvable");
     }
 
-    private boolean xmlCVIsValid(CVDTO cv) {
-        try {
-            byte[] bytes = mapper.writeValueAsBytes(cv);
-            System.out.println(mapper.writeValueAsString(cv));
-            InputStream in = new ByteArrayInputStream(bytes);
-            return cvParser.isValid(in);
-        } catch (SAXException | IOException e) {
-            throw new CVParserException("Un problème est survenu lors de la validation du format xml", e);
+    @Override
+    public void delete(String id) {
+        if (repository.existsById(id)) {
+            repository.deleteById(id);
         }
+        throw new CVNotFoundException("Le CV est introuvable");
     }
 }

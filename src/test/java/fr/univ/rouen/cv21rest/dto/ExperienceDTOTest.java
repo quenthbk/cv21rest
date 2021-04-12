@@ -21,9 +21,9 @@ public class ExperienceDTOTest {
     public void shouldBeValid_whenAllValidParamSet() {
         // GIVEN
         ExperienceDTO value = new ExperienceDTO();
-        value.setDatedeb(LocalDate.now());
-        value.setDatefin(LocalDate.now());
-        value.setTitre("s".repeat(Constant.STRING_COMMENT_MAX));
+        value.setDateStart(LocalDate.now());
+        value.setDateEnd(LocalDate.now());
+        value.setTitle("s".repeat(Constant.STRING_COMMENT_MAX));
 
         // WHEN
         Set<ConstraintViolation<ExperienceDTO>> violations =  validator.validate(value);
@@ -35,8 +35,8 @@ public class ExperienceDTOTest {
     public void shouldBeValid_whenDatedebIsNotSet() {
         // GIVEN
         ExperienceDTO value = new ExperienceDTO();
-        value.setDatefin(LocalDate.now());
-        value.setTitre("s".repeat(Constant.STRING_COMMENT_MAX));
+        value.setDateEnd(LocalDate.now());
+        value.setTitle("s".repeat(Constant.STRING_COMMENT_MAX));
 
         // WHEN
         Set<ConstraintViolation<ExperienceDTO>> violations =  validator.validate(value);
@@ -48,8 +48,8 @@ public class ExperienceDTOTest {
     public void shouldBeValid_whenDatefinIsNotSet() {
         // GIVEN
         ExperienceDTO value = new ExperienceDTO();
-        value.setDatedeb(LocalDate.now());
-        value.setTitre("s".repeat(Constant.STRING_COMMENT_MAX));
+        value.setDateStart(LocalDate.now());
+        value.setTitle("s".repeat(Constant.STRING_COMMENT_MAX));
 
         // WHEN
         Set<ConstraintViolation<ExperienceDTO>> violations =  validator.validate(value);
@@ -61,8 +61,8 @@ public class ExperienceDTOTest {
     public void shouldBeValid_whenTitleNotSet() {
         // GIVEN
         ExperienceDTO value = new ExperienceDTO();
-        value.setDatedeb(LocalDate.now());
-        value.setDatefin(LocalDate.now());
+        value.setDateStart(LocalDate.now());
+        value.setDateEnd(LocalDate.now());
 
         // WHEN
         Set<ConstraintViolation<ExperienceDTO>> violations =  validator.validate(value);
@@ -74,9 +74,9 @@ public class ExperienceDTOTest {
     public void shouldBeValid_whenTitreExceed128() {
         // GIVEN
         ExperienceDTO value = new ExperienceDTO();
-        value.setDatedeb(LocalDate.now());
-        value.setDatefin(LocalDate.now());
-        value.setTitre("s".repeat(Constant.STRING_COMMENT_MAX + 1));
+        value.setDateStart(LocalDate.now());
+        value.setDateEnd(LocalDate.now());
+        value.setTitle("s".repeat(Constant.STRING_COMMENT_MAX + 1));
 
         // WHEN
         Set<ConstraintViolation<ExperienceDTO>> violations =  validator.validate(value);
@@ -88,9 +88,9 @@ public class ExperienceDTOTest {
     public void shouldBeValid_whenTitreIsBlank() {
         // GIVEN
         ExperienceDTO value = new ExperienceDTO();
-        value.setDatedeb(LocalDate.now());
-        value.setDatefin(LocalDate.now());
-        value.setTitre("          ");
+        value.setDateStart(LocalDate.now());
+        value.setDateEnd(LocalDate.now());
+        value.setTitle("          ");
 
         // WHEN
         Set<ConstraintViolation<ExperienceDTO>> violations =  validator.validate(value);

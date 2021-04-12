@@ -23,9 +23,9 @@ public class DegreeDTOTest {
         // GIVEN
         DegreeDTO value = new DegreeDTO();
         value.setDate(LocalDate.now());
-        value.setTitre("s".repeat(Constant.STRING_NAME_MAX));
-        value.setEtab("s".repeat(Constant.STRING_NAME_MAX));
-        value.setNiveau(DegreeLevel.I);
+        value.setTitle("s".repeat(Constant.STRING_NAME_MAX));
+        value.setInstitution("s".repeat(Constant.STRING_NAME_MAX));
+        value.setLevel(DegreeLevel.I);
 
         // WHEN
         Set<ConstraintViolation<DegreeDTO>> violations =  validator.validate(value);
@@ -38,9 +38,9 @@ public class DegreeDTOTest {
         // GIVEN
         DegreeDTO value = new DegreeDTO();
         value.setDate(LocalDate.now());
-        value.setTitre("s".repeat(Constant.STRING_NAME_MAX + 1));
-        value.setEtab("s".repeat(Constant.STRING_NAME_MAX));
-        value.setNiveau(DegreeLevel.I);
+        value.setTitle("s".repeat(Constant.STRING_NAME_MAX + 1));
+        value.setInstitution("s".repeat(Constant.STRING_NAME_MAX));
+        value.setLevel(DegreeLevel.I);
 
         // WHEN
         Set<ConstraintViolation<DegreeDTO>> violations =  validator.validate(value);
@@ -53,9 +53,9 @@ public class DegreeDTOTest {
         // GIVEN
         DegreeDTO value = new DegreeDTO();
         value.setDate(LocalDate.now());
-        value.setTitre("s".repeat(Constant.STRING_NAME_MAX));
-        value.setEtab("s".repeat(Constant.STRING_NAME_MAX + 1));
-        value.setNiveau(DegreeLevel.I);
+        value.setTitle("s".repeat(Constant.STRING_NAME_MAX));
+        value.setInstitution("s".repeat(Constant.STRING_NAME_MAX + 1));
+        value.setLevel(DegreeLevel.I);
 
         // WHEN
         Set<ConstraintViolation<DegreeDTO>> violations =  validator.validate(value);
@@ -68,8 +68,8 @@ public class DegreeDTOTest {
         // GIVEN
         DegreeDTO value = new DegreeDTO();
         value.setDate(LocalDate.now());
-        value.setTitre("s".repeat(Constant.STRING_NAME_MAX));
-        value.setNiveau(DegreeLevel.I);
+        value.setTitle("s".repeat(Constant.STRING_NAME_MAX));
+        value.setLevel(DegreeLevel.I);
 
         // WHEN
         Set<ConstraintViolation<DegreeDTO>> violations =  validator.validate(value);
@@ -82,8 +82,8 @@ public class DegreeDTOTest {
         // GIVEN
         DegreeDTO value = new DegreeDTO();
         value.setDate(LocalDate.now());
-        value.setEtab("s".repeat(Constant.STRING_NAME_MAX));
-        value.setNiveau(DegreeLevel.I);
+        value.setInstitution("s".repeat(Constant.STRING_NAME_MAX));
+        value.setLevel(DegreeLevel.I);
 
         // WHEN
         Set<ConstraintViolation<DegreeDTO>> violations =  validator.validate(value);
@@ -95,9 +95,9 @@ public class DegreeDTOTest {
     public void shouldBeInvalid_whenDateIsNotSet() {
         // GIVEN
         DegreeDTO value = new DegreeDTO();
-        value.setTitre("s".repeat(Constant.STRING_NAME_MAX));
-        value.setEtab("s".repeat(Constant.STRING_NAME_MAX));
-        value.setNiveau(DegreeLevel.I);
+        value.setTitle("s".repeat(Constant.STRING_NAME_MAX));
+        value.setInstitution("s".repeat(Constant.STRING_NAME_MAX));
+        value.setLevel(DegreeLevel.I);
 
         // WHEN
         Set<ConstraintViolation<DegreeDTO>> violations =  validator.validate(value);
@@ -110,8 +110,8 @@ public class DegreeDTOTest {
         // GIVEN
         DegreeDTO value = new DegreeDTO();
         value.setDate(LocalDate.now());
-        value.setTitre("s".repeat(Constant.STRING_NAME_MAX));
-        value.setEtab("s".repeat(Constant.STRING_NAME_MAX));
+        value.setTitle("s".repeat(Constant.STRING_NAME_MAX));
+        value.setInstitution("s".repeat(Constant.STRING_NAME_MAX));
 
         // WHEN
         Set<ConstraintViolation<DegreeDTO>> violations =  validator.validate(value);

@@ -13,61 +13,61 @@ import java.time.LocalDate;
 @JacksonXmlRootElement(localName = "expe")
 public class ExperienceDTO {
 
-    @JacksonXmlProperty
+    @JacksonXmlProperty(localName = "datedeb")
     @JsonFormat(pattern = "yyyy-MM-dd")
     @NotNull
-    private LocalDate datedeb;
+    private LocalDate dateStart;
 
-    @JacksonXmlProperty
+    @JacksonXmlProperty(localName = "datefin")
     @JsonFormat(pattern = "yyyy-MM-dd")
     @NotNull
-    private LocalDate datefin;
+    private LocalDate dateEnd;
 
-    @JacksonXmlProperty
+    @JacksonXmlProperty(localName = "titre")
     @NotBlank
     @Size(max = Constant.STRING_COMMENT_MAX)
-    private String titre;
+    private String title;
 
     public ExperienceDTO() {
 
     }
 
-    public ExperienceDTO(LocalDate datedeb, LocalDate datefin, String titre) {
-        this.datedeb = datedeb;
-        this.datefin = datefin;
-        this.titre = titre;
+    public ExperienceDTO(LocalDate dateStart, LocalDate dateEnd, String title) {
+        this.dateStart = dateStart;
+        this.dateEnd = dateEnd;
+        this.title = title;
     }
 
-    public LocalDate getDatedeb() {
-        return datedeb;
+    public LocalDate getDateStart() {
+        return dateStart;
     }
 
-    public void setDatedeb(LocalDate datedeb) {
-        this.datedeb = datedeb;
+    public void setDateStart(LocalDate dateStart) {
+        this.dateStart = dateStart;
     }
 
-    public LocalDate getDatefin() {
-        return datefin;
+    public LocalDate getDateEnd() {
+        return dateEnd;
     }
 
-    public void setDatefin(LocalDate datefin) {
-        this.datefin = datefin;
+    public void setDateEnd(LocalDate dateEnd) {
+        this.dateEnd = dateEnd;
     }
 
-    public String getTitre() {
-        return titre;
+    public String getTitle() {
+        return title;
     }
 
-    public void setTitre(String titre) {
-        this.titre = titre;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     @Override
     public String toString() {
         return "ExperienceDTO{" +
-                "datedeb=" + datedeb +
-                ", datefin=" + datefin +
-                ", titre='" + titre + '\'' +
+                "datedeb=" + dateStart +
+                ", datefin=" + dateEnd +
+                ", titre='" + title + '\'' +
                 '}';
     }
 }

@@ -1,21 +1,23 @@
 package fr.univ.rouen.cv21rest.exception;
 
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import fr.univ.rouen.cv21rest.model.CVStatus;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name = "response")
+@JacksonXmlRootElement(localName = "response")
 public class ErrorResponse {
 
-    @XmlElement
+    @JacksonXmlProperty
     final private CVStatus status = CVStatus.ERROR;
 
-    @XmlElement
+    @JacksonXmlProperty
     private String message;
 
     public ErrorResponse(String message) {
-        setMessage(message);
+        this.message = message;
     }
 
     public void setMessage(String message) {

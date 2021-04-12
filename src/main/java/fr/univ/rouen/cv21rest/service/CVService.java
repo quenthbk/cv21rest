@@ -1,10 +1,11 @@
 package fr.univ.rouen.cv21rest.service;
 
-import fr.univ.rouen.cv21rest.dto.CVDTO;
 import fr.univ.rouen.cv21rest.exception.CVNotFoundException;
 import fr.univ.rouen.cv21rest.exception.InvalidCVException;
+import fr.univ.rouen.cv21rest.model.CV;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Interface permettant d'implémenter le service associé à la gestion des CV.
@@ -16,7 +17,7 @@ public interface CVService {
      *
      * @return la liste des cv
      */
-    List<CVDTO> getAll();
+    List<CV> getAll();
 
     /**
      * Renvoie le cv identifié par {id}
@@ -25,7 +26,7 @@ public interface CVService {
      * @return le cv identifié par {id}
      * @throws CVNotFoundException si le CV est introuvable
      */
-    CVDTO getById(long id);
+    CV getById(String id);
 
     /**
      * Créer un nouveau CV et renvoie ce cv muni de son ID
@@ -34,7 +35,7 @@ public interface CVService {
      * @return Le devis préalablement enregistré
      * @throws InvalidCVException si le CV est invalide
      */
-    CVDTO create(CVDTO cv);
+    CV create(CV cv);
 
     /**
      * Met à jour un nouveau CV identifié par {id} et renvoie ce cv muni de son id.
@@ -45,7 +46,7 @@ public interface CVService {
      * @throws InvalidCVException si le CV est invalide
      * @throws CVNotFoundException si le CV est introuvable
      */
-    CVDTO update(long id, CVDTO cv);
+    CV update(String id, CV cv);
 
     /**
      * Supprime un CV identifié par l'id {id}
@@ -53,5 +54,5 @@ public interface CVService {
      * @param id L'identifiant du cv à supprimer
      * @throws CVNotFoundException si le CV est introuvable
      */
-    void delete(long id);
+    void delete(String id);
 }

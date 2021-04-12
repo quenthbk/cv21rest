@@ -10,21 +10,21 @@ import java.io.Serializable;
 @JacksonXmlRootElement(localName = "response")
 public class EntityResponseDTO implements Serializable {
     @JacksonXmlProperty
-    private long id;
+    private String id;
 
     @JacksonXmlProperty
     private CVStatus status;
 
-    public EntityResponseDTO(long id, CVStatus status) {
+    public EntityResponseDTO(String id, CVStatus status) {
         this.id = id;
         this.status = status;
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

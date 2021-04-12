@@ -1,6 +1,6 @@
 package fr.univ.rouen.cv21rest.dto;
 
-import fr.univ.rouen.cv21rest.model.Certification;
+import fr.univ.rouen.cv21rest.model.LanguageCertification;
 import fr.univ.rouen.cv21rest.model.LanguageLevel;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -25,11 +25,11 @@ public class VariousDTOTest {
 
     VariousDTOTest() {
         otherValid.setComment("string");
-        otherValid.setTitre("string");
-        languageValid.setLang("string");
-        languageValid.setNivs(LanguageLevel.A1);
-        languageValid.setNivi(200);
-        languageValid.setCert(Certification.CLES);
+        otherValid.setTitle("string");
+        languageValid.setName("string");
+        languageValid.setLevel(LanguageLevel.A1);
+        languageValid.setGrade(200);
+        languageValid.setCertification(LanguageCertification.CLES);
     }
 
 

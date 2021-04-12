@@ -1,8 +1,6 @@
 package fr.univ.rouen.cv21rest.dto;
 
-import fr.univ.rouen.cv21rest.model.Certification;
 import fr.univ.rouen.cv21rest.model.DegreeLevel;
-import fr.univ.rouen.cv21rest.model.LanguageLevel;
 import fr.univ.rouen.cv21rest.validation.Constant;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -14,7 +12,6 @@ import javax.validation.Validator;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Set;
 
 @SpringBootTest
@@ -29,12 +26,12 @@ public class CompetencesDTOTest {
 
     CompetencesDTOTest() {
         degreeValid.setDate(LocalDate.now());
-        degreeValid.setTitre("s".repeat(Constant.STRING_NAME_MAX));
-        degreeValid.setEtab("s".repeat(Constant.STRING_NAME_MAX));
-        degreeValid.setNiveau(DegreeLevel.I);
-        certificationValid.setDatedeb(LocalDate.now());
-        certificationValid.setDatefin(LocalDate.now());
-        certificationValid.setTitre("s".repeat(Constant.STRING_COMMENT_MAX));
+        degreeValid.setTitle("s".repeat(Constant.STRING_NAME_MAX));
+        degreeValid.setInstitution("s".repeat(Constant.STRING_NAME_MAX));
+        degreeValid.setLevel(DegreeLevel.I);
+        certificationValid.setDateStart(LocalDate.now());
+        certificationValid.setDateEnd(LocalDate.now());
+        certificationValid.setTitle("s".repeat(Constant.STRING_COMMENT_MAX));
     }
 
 

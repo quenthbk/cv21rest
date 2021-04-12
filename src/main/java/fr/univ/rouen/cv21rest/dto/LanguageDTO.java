@@ -2,7 +2,7 @@ package fr.univ.rouen.cv21rest.dto;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
-import fr.univ.rouen.cv21rest.model.Certification;
+import fr.univ.rouen.cv21rest.model.LanguageCertification;
 import fr.univ.rouen.cv21rest.model.LanguageLevel;
 import fr.univ.rouen.cv21rest.validation.Constant;
 
@@ -10,74 +10,74 @@ import javax.validation.constraints.*;
 
 @JacksonXmlRootElement(localName = "lv")
 public class LanguageDTO {
-    @JacksonXmlProperty(isAttribute = true)
+    @JacksonXmlProperty(isAttribute = true, localName = "lang")
     @NotBlank
     @Size(max = Constant.STRING_NAME_MAX)
-    private String lang;
+    private String name;
 
-    @JacksonXmlProperty(isAttribute = true)
+    @JacksonXmlProperty(isAttribute = true, localName = "cert")
     @NotNull
-    private Certification cert;
+    private LanguageCertification certification;
 
-    @JacksonXmlProperty(isAttribute = true)
+    @JacksonXmlProperty(isAttribute = true, localName = "nivs")
     @NotNull
-    private LanguageLevel nivs;
+    private LanguageLevel level;
 
-    @JacksonXmlProperty(isAttribute = true)
+    @JacksonXmlProperty(isAttribute = true, localName = "nivi")
     @Min(10)
     @Max(990)
-    private Integer nivi;
+    private Integer grade;
 
     public LanguageDTO() {
 
     }
 
-    public LanguageDTO(String lang, Certification cert, LanguageLevel nivs, Integer nivi) {
-        this.lang = lang;
-        this.cert = cert;
-        this.nivs = nivs;
-        this.nivi = nivi;
+    public LanguageDTO(String name, LanguageCertification certification, LanguageLevel level, Integer grade) {
+        this.name = name;
+        this.certification = certification;
+        this.level = level;
+        this.grade = grade;
     }
 
-    public String getLang() {
-        return lang;
+    public String getName() {
+        return name;
     }
 
-    public void setLang(String lang) {
-        this.lang = lang;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Certification getCert() {
-        return cert;
+    public LanguageCertification getCertification() {
+        return certification;
     }
 
-    public void setCert(Certification cert) {
-        this.cert = cert;
+    public void setCertification(LanguageCertification certification) {
+        this.certification = certification;
     }
 
-    public LanguageLevel getNivs() {
-        return nivs;
+    public LanguageLevel getLevel() {
+        return level;
     }
 
-    public void setNivs(LanguageLevel nivs) {
-        this.nivs = nivs;
+    public void setLevel(LanguageLevel level) {
+        this.level = level;
     }
 
-    public Integer getNivi() {
-        return nivi;
+    public Integer getGrade() {
+        return grade;
     }
 
-    public void setNivi(Integer nivi) {
-        this.nivi = nivi;
+    public void setGrade(Integer grade) {
+        this.grade = grade;
     }
 
     @Override
     public String toString() {
         return "LanguageDTO{" +
-                "lang='" + lang + '\'' +
-                ", cert=" + cert +
-                ", nivs=" + nivs +
-                ", nivi=" + nivi +
+                "lang='" + name + '\'' +
+                ", cert=" + certification +
+                ", nivs=" + level +
+                ", nivi=" + grade +
                 '}';
     }
 }

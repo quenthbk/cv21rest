@@ -9,76 +9,76 @@ import javax.validation.constraints.*;
 
 @JacksonXmlRootElement(localName = "identite")
 public class IdentityDTO {
-    @JacksonXmlProperty
+    @JacksonXmlProperty(localName = "genre")
     @NotNull
-    private Gender genre;
+    private Gender gender;
 
-    @JacksonXmlProperty
+    @JacksonXmlProperty(localName = "nom")
     @NotBlank
     @Size(max = Constant.STRING_NAME_MAX)
-    private String nom;
+    private String lastname;
 
-    @JacksonXmlProperty
+    @JacksonXmlProperty(localName = "prenom")
     @NotBlank
     @Size(max = Constant.STRING_NAME_MAX)
-    private String prenom;
+    private String firstname;
 
-    @JacksonXmlProperty
+    @JacksonXmlProperty(localName = "tel")
     @Pattern(regexp = Constant.PHONE_NUMBER_REGEX)
-    private String tel;
+    private String phoneNumber;
 
-    @JacksonXmlProperty
+    @JacksonXmlProperty(localName = "mel")
     @Email
-    private String mel;
+    private String email;
 
-    public Gender getGenre() {
-        return genre;
+    public Gender getGender() {
+        return gender;
     }
 
-    public void setGenre(Gender genre) {
-        this.genre = genre;
+    public void setGender(Gender gender) {
+        this.gender = gender;
     }
 
-    public String getNom() {
-        return nom;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
-    public String getPrenom() {
-        return prenom;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
-    public String getTel() {
-        return tel;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setTel(String tel) {
-        this.tel = tel;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
-    public String getMel() {
-        return mel;
+    public String getEmail() {
+        return email;
     }
 
-    public void setMel(String mel) {
-        this.mel = mel;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override
     public String toString() {
         return "IdentityDTO{" +
-                "genre=" + genre +
-                ", nom='" + nom + '\'' +
-                ", prenom='" + prenom + '\'' +
-                ", tel='" + tel + '\'' +
-                ", mel='" + mel + '\'' +
+                "genre=" + gender +
+                ", nom='" + lastname + '\'' +
+                ", prenom='" + firstname + '\'' +
+                ", tel='" + phoneNumber + '\'' +
+                ", mel='" + email + '\'' +
                 '}';
     }
 }
