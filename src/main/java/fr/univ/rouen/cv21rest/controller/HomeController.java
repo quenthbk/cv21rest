@@ -1,5 +1,7 @@
 package fr.univ.rouen.cv21rest.controller;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.info.BuildProperties;
 import org.springframework.http.MediaType;
@@ -16,6 +18,7 @@ public class HomeController {
     @Autowired
     private TemplateEngine engine;
 
+    @ApiOperation(value = "Affiche les informations de l'api")
     @GetMapping(value = "/", produces = MediaType.TEXT_HTML_VALUE)
     public String home() {
         Context context = new Context();

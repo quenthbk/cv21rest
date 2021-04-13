@@ -1,4 +1,4 @@
-package fr.univ.rouen.cv21rest.util;
+package fr.univ.rouen.cv21rest.validation;
 
 import org.xml.sax.ErrorHandler;
 import org.xml.sax.SAXException;

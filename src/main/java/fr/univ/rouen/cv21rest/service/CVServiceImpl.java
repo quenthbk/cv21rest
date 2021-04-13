@@ -73,9 +73,9 @@ public class CVServiceImpl implements CVService {
 
     @Override
     public void delete(String id) {
-        if (repository.existsById(id)) {
-            repository.deleteById(id);
+        if (! repository.existsById(id)) {
+            throw new CVNotFoundException("Le CV est introuvable");
         }
-        throw new CVNotFoundException("Le CV est introuvable");
+        repository.deleteById(id);
     }
 }

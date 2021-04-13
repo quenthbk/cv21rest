@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
-import com.sun.xml.txw2.annotation.XmlNamespace;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
@@ -13,12 +12,12 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.List;
 
-@JacksonXmlRootElement(localName = "cv21")
+@JacksonXmlRootElement(localName = "cv21:cv21")
 public class CVDTO implements Serializable {
     private static final long SerialVersionUID = 1L;
 
-    //@JacksonXmlProperty(isAttribute = true, localName = "xmlns:cv21")
-    //private final String xmlns = "http://univ.fr/cv21";
+    @JacksonXmlProperty(isAttribute = true, localName = "xmlns:cv21")
+    public final String XMLNS = "http://univ.fr/cv21";
 
     @ApiModelProperty(notes = "L'identifient unique du CV")
     @JacksonXmlProperty(isAttribute = true)
