@@ -4,29 +4,35 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import fr.univ.rouen.cv21rest.model.Gender;
 import fr.univ.rouen.cv21rest.validation.Constant;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.*;
 
 @JacksonXmlRootElement(localName = "identite")
 public class IdentityDTO {
+    @ApiModelProperty(notes = "Le genre de la personne", example = "Mme")
     @JacksonXmlProperty(localName = "genre")
     @NotNull
     private Gender gender;
 
+    @ApiModelProperty(notes = "Le nom de la personne", example = "DEBOIS")
     @JacksonXmlProperty(localName = "nom")
     @NotBlank
     @Size(max = Constant.STRING_NAME_MAX)
     private String lastname;
 
+    @ApiModelProperty(notes = "Le prénom de la personne", example = "Marie")
     @JacksonXmlProperty(localName = "prenom")
     @NotBlank
     @Size(max = Constant.STRING_NAME_MAX)
     private String firstname;
 
+    @ApiModelProperty(notes = "Le numéro de téléphone", example = "0602030405")
     @JacksonXmlProperty(localName = "tel")
     @Pattern(regexp = Constant.PHONE_NUMBER_REGEX)
     private String phoneNumber;
 
+    @ApiModelProperty(notes = "L'adresse email", example = "marie.debois@mailo.com")
     @JacksonXmlProperty(localName = "mel")
     @Email
     private String email;

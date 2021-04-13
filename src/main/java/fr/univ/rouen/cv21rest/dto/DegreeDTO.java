@@ -4,6 +4,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import fr.univ.rouen.cv21rest.model.DegreeLevel;
 import fr.univ.rouen.cv21rest.validation.Constant;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -13,19 +14,23 @@ import java.time.LocalDate;
 @JacksonXmlRootElement(localName = "diplôme")
 public class DegreeDTO implements Serializable {
 
+    @ApiModelProperty(notes = "Le niveau du diplôme", example = "IV")
     @JacksonXmlProperty(isAttribute = true, localName = "niveau")
     @NotNull
     private DegreeLevel level;
 
+    @ApiModelProperty(notes = "La date d'obtention du diplôme", example = "1995-05-15")
     @JacksonXmlProperty(localName = "date")
     @NotNull
     private LocalDate date;
 
+    @ApiModelProperty(notes = "Le nom du diplôme", example = "Baccalauréat")
     @JacksonXmlProperty(localName = "titre")
     @NotNull
     @Size(max = Constant.STRING_NAME_MAX)
     private String title;
 
+    @ApiModelProperty(notes = "L'établissement de formation", example = "Jean Dupres Bontilly")
     @JacksonXmlProperty(localName = "etab")
     @NotNull
     @Size(max = Constant.STRING_NAME_MAX)

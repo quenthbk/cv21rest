@@ -29,7 +29,7 @@ public class CVParser {
         spf.setNamespaceAware(true);
         spf.setValidating(true);
         parser = spf.newSAXParser();
-        Resource r = resourceLoader.getResource("cv21.xsd");
+        Resource r = resourceLoader.getResource("schema/cv21.xsd");
         parser.setProperty(JAXP_SCHEMA_LANGUAGE, W3C_XML_SCHEMA);
         parser.setProperty(JAXP_SCHEMA_SOURCE, r.getFile());
     }

@@ -1,10 +1,14 @@
 package fr.univ.rouen.cv21rest.model;
 
+import org.jetbrains.annotations.NotNull;
+import org.springframework.data.mongodb.core.index.TextIndexed;
+
 public class Identity {
     private Gender gender;
 
     private String lastname;
 
+    @TextIndexed
     private String firstname;
 
     private String phoneNumber;

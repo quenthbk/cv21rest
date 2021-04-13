@@ -1,31 +1,26 @@
 package fr.univ.rouen.cv21rest.service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import fr.univ.rouen.cv21rest.dto.CVDTO;
+import fr.univ.rouen.cv21rest.exception.CVAlreadyExistsException;
 import fr.univ.rouen.cv21rest.exception.CVNotFoundException;
-import fr.univ.rouen.cv21rest.exception.CVParserException;
-import fr.univ.rouen.cv21rest.exception.InvalidCVException;
 import fr.univ.rouen.cv21rest.model.CV;
 import fr.univ.rouen.cv21rest.repository.CVRepository;
-import fr.univ.rouen.cv21rest.util.CVParser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
-import org.xml.sax.SAXException;
 
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.*;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @Service
 public class CVServiceImpl implements CVService {
 
 
     private final CVRepository repository;
+
+    @Autowired
+    private MongoOperations mongo;
 
     @Autowired
     public CVServiceImpl(CVRepository repository) {
@@ -48,6 +43,22 @@ public class CVServiceImpl implements CVService {
 
     @Override
     public CV create(CV cv) {
+        // Requêtes permettant de rechercher par critère
+        Query query = new Query();
+        query.addCriteria(
+                Criteria.where("identity.firstname").is(cv.getIdentity().getFirstname())
+                        .and("identity.lastname").is(cv.getIdentity().getLastname())
+                        .and("objective.job").is(cv.getObjective().getJob())
+                        .and("objective.request").is(cv.getObjective().getRequest())
+        );
+        List<CV> cvs = mongo.find(query, CV.class);
+
+        // Si la liste n'est pas vide, alors il y a un conflit
+        if (! cvs.isEmpty()) {
+            throw new CVAlreadyExistsException(
+                    "Ce CV existe déjà à l'id : " + cvs.get(0).getId());
+        }
+
         return repository.save(cv);
     }
 

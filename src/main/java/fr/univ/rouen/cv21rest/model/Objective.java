@@ -1,32 +1,33 @@
 package fr.univ.rouen.cv21rest.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import org.jetbrains.annotations.NotNull;
 
-public enum Objective {
-    @JacksonXmlProperty(isAttribute = true, localName = "stage")
-    INTERNSHIP("stage"),
-    @JacksonXmlProperty(isAttribute = true, localName = "emploie")
-    EMPLOYMENT("emploie");
+public class Objective {
+    private String job;
 
-    private String value;
+    private String request;
 
-    Objective(String value) {
-        this.value = value;
+    public String getJob() {
+        return job;
     }
 
-    public String getValue() {
-        return value;
+    public void setJob(String job) {
+        this.job = job;
     }
 
-    public void setValue(String value) {
-        this.value = value;
+    public String getRequest() {
+        return request;
+    }
+
+    public void setRequest(String request) {
+        this.request = request;
     }
 
     @Override
     public String toString() {
         return "Objective{" +
-                "value='" + value + '\'' +
+                "job='" + job + '\'' +
+                ", request='" + request + '\'' +
                 '}';
     }
 }

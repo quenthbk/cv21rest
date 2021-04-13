@@ -5,24 +5,29 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import fr.univ.rouen.cv21rest.model.LanguageCertification;
 import fr.univ.rouen.cv21rest.model.LanguageLevel;
 import fr.univ.rouen.cv21rest.validation.Constant;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.*;
 
 @JacksonXmlRootElement(localName = "lv")
 public class LanguageDTO {
+    @ApiModelProperty(notes = "Le nom de la langue", example = "anglais")
     @JacksonXmlProperty(isAttribute = true, localName = "lang")
     @NotBlank
     @Size(max = Constant.STRING_NAME_MAX)
     private String name;
 
+    @ApiModelProperty(notes = "La certification associée", example = "TOEIC")
     @JacksonXmlProperty(isAttribute = true, localName = "cert")
     @NotNull
     private LanguageCertification certification;
 
+    @ApiModelProperty(notes = "Le niveau de langue", example = "B2")
     @JacksonXmlProperty(isAttribute = true, localName = "nivs")
     @NotNull
     private LanguageLevel level;
 
+    @ApiModelProperty(notes = "La note obtenue", example = "920")
     @JacksonXmlProperty(isAttribute = true, localName = "nivi")
     @Min(10)
     @Max(990)

@@ -19,9 +19,9 @@ public class VariousDTOTest {
     @Autowired
     private Validator validator;
 
-    private OtherDTO otherValid = new OtherDTO();
+    private final OtherDTO otherValid = new OtherDTO();
 
-    private LanguageDTO languageValid = new LanguageDTO();
+    private final LanguageDTO languageValid = new LanguageDTO();
 
     VariousDTOTest() {
         otherValid.setComment("string");

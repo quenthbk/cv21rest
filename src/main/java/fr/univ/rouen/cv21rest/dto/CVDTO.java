@@ -1,10 +1,11 @@
 package fr.univ.rouen.cv21rest.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
-import fr.univ.rouen.cv21rest.model.Objective;
+import com.sun.xml.txw2.annotation.XmlNamespace;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
@@ -16,28 +17,40 @@ import java.util.List;
 public class CVDTO implements Serializable {
     private static final long SerialVersionUID = 1L;
 
+    //@JacksonXmlProperty(isAttribute = true, localName = "xmlns:cv21")
+    //private final String xmlns = "http://univ.fr/cv21";
+
+    @ApiModelProperty(notes = "L'identifient unique du CV")
     @JacksonXmlProperty(isAttribute = true)
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private String id;
 
+    @ApiModelProperty(notes = "L'identité de la personne associée au CV")
     @JacksonXmlProperty(localName = "identite")
     @Valid
     @NotNull
     private IdentityDTO identity;
 
-    @JacksonXmlProperty
-    private Objective objective;
+    @ApiModelProperty(notes = "L'objectif associé au CV")
+    @JacksonXmlProperty(localName = "objectif")
+    @Valid
+    @NotNull
+    private ObjectiveDTO objective;
 
-    @JacksonXmlProperty(localName = "prof")
+    @ApiModelProperty(notes = "L'expérience professionnelle de la personne")
+    @JacksonXmlElementWrapper(localName = "prof")
+    @JacksonXmlProperty(localName = "expe")
     @Valid
     @NotEmpty
     private List<@Valid ExperienceDTO> experiences;
 
+    @ApiModelProperty(notes = "Les compétences mises en avant")
     @JacksonXmlProperty(localName = "competences")
     @Valid
     @NotNull
     private CompetencesDTO competences;
 
+    @ApiModelProperty(notes = "Informations complémentaires")
     @JacksonXmlProperty(localName = "divers")
     @Valid
     @NotNull
@@ -79,11 +92,11 @@ public class CVDTO implements Serializable {
         this.various = various;
     }
 
-    public Objective getObjective() {
+    public ObjectiveDTO getObjective() {
         return objective;
     }
 
-    public void setObjective(Objective objective) {
+    public void setObjective(ObjectiveDTO objective) {
         this.objective = objective;
     }
 

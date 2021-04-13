@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <title>Service Rest CV</title>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<header>
+    <div class="objective" th:if="${objective != null}">
+        <h1 th:text="${objective.job}">Développement Logiciel</h1>
+        <p th:text="${objective.request}">Demande de stage</p>
+    </div>
+    <h2><span th:text="${identity.gender.value}">M</span>.
+        <span th:text="${identity.lastname}">NOM</span>
+        <span th:text="${identity.firstname}">prenom</span></h2>
+    <p>
+        <span th:if="${identity.phoneNumber != null}">Tel :
+            <span th:text="${identity.phoneNumber}">06422</span>
+        </span><br/>
+        <span th:if="${identity.email != null}">Mel :
+            <span th:text="${identity.email}">kjfd@dfdf.com</span>
+        </span>
+    </p>
+</header>
+<section>
+    <h2>Expériences professionnelles</h2>
+    <ol>
+        <li th:each="experience : ${experiences}">
+            <span th:text="${experience.title}">Développeur Java</span> (du
+            <span th:text="${experience.dateStart}"></span> au
+            <span th:text="${experience.dateEnd}"></span>)
+        </li>
+    </ol>
+</section>
+<section>
+    <h2>Diplômes</h2>
+    <table>
+        <tr th:each="degree : ${degrees}">
+            <td th:text="${degree.date}">1080-06-01</td>
+            <td th:text="${degree.title}">bac</td>
+            <td th:text="${degree.level}">(IV)</td>
+            <td th:text="${degree.institution}">etablissement</td>
+        </tr>
+    </table>
+</section>
+<section>
+    <h2>Certifications</h2>
+    <table>
+        <tr th:each="certification : ${certifications}">
+            <td><span th:text="${certification.dateStart}">1080-06-01</span> -
+                <span th:text="${certification.dateEnd}">1080-06-01</span></td>
+            <td th:text="${certification.title}">titre</td>
+        </tr>
+    </table>
+</section>
+<section>
+    <h2>Langues</h2>
+    <ul>
+        <li th:each="language : ${languages}">
+            <span th:text="${language.name}">fr</span> :
+            <span th:text="${language.level}">CLES</span>
+            <span th:if="${language.grade != null}">(<span th:text="${language.grade}">50</span>)</span>
+        </li>
+    </ul>
+</section>
+<section>
+    <h2>Divers</h2>
+    <ul>
+        <li th:each="other : ${others}">
+            <span th:text="${other.title}">Titre</span> : <span th:text="${other.comment}">Description</span>
+        </li>
+    </ul>
+</section>
+</body>
+</html>

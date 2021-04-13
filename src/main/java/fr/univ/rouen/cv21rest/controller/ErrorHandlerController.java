@@ -1,5 +1,6 @@
 package fr.univ.rouen.cv21rest.controller;
 
+import fr.univ.rouen.cv21rest.exception.CVAlreadyExistsException;
 import fr.univ.rouen.cv21rest.exception.CVNotFoundException;
 import fr.univ.rouen.cv21rest.exception.ErrorResponse;
 import fr.univ.rouen.cv21rest.exception.InvalidCVException;
@@ -21,6 +22,11 @@ public class ErrorHandlerController {
     @ExceptionHandler(InvalidCVException.class)
     public ResponseEntity<ErrorResponse> InvalidCVExceptionHandler(Exception e) {
         return buildErrorResponse(e.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(CVAlreadyExistsException.class)
+    public ResponseEntity<ErrorResponse> CVAlreadyExistsExceptionHandler(Exception e) {
+        return buildErrorResponse(e.getMessage(), HttpStatus.CONFLICT);
     }
 
     private ResponseEntity<ErrorResponse> buildErrorResponse(String message, HttpStatus status) {

@@ -1,6 +1,7 @@
 package fr.univ.rouen.cv21rest.model;
 
 import ch.qos.logback.core.encoder.EchoEncoder;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 

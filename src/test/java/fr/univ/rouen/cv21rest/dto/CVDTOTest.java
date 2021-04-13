@@ -25,6 +25,8 @@ public class CVDTOTest {
 
     private final CompetencesDTO validCompetences;
 
+    private final ObjectiveDTO validObjective;
+
     public CVDTOTest() {
         validIdentity = new IdentityDTO();
         validIdentity.setPhoneNumber("0606060606");
@@ -54,6 +56,10 @@ public class CVDTOTest {
 
         validCompetences = new CompetencesDTO();
         validCompetences.setDegrees(Collections.singletonList(validDegree));
+
+        validObjective = new ObjectiveDTO();
+        validObjective.setJob("s");
+        validObjective.setRequest(ObjectiveRequest.EMPLOYMENT);
     }
 
     @Test
@@ -64,7 +70,7 @@ public class CVDTOTest {
         value.setCompetences(validCompetences);
         value.setExperiences(Collections.singletonList(validExperience));
         value.setIdentity(validIdentity);
-        value.setObjective(Objective.INTERNSHIP);
+        value.setObjective(validObjective);
 
         // WHEN
         Set<ConstraintViolation<CVDTO>> violations =  validator.validate(value);
@@ -73,7 +79,7 @@ public class CVDTOTest {
     }
 
     @Test
-    public void shouldBeValid_whenObjectifIsNotSet() {
+    public void shouldBeInvalid_whenObjectifIsNotSet() {
         // GIVEN
         CVDTO value = new CVDTO();
         value.setVarious(validVarious);
@@ -81,10 +87,27 @@ public class CVDTOTest {
         value.setExperiences(Collections.singletonList(validExperience));
         value.setIdentity(validIdentity);
 
+
         // WHEN
         Set<ConstraintViolation<CVDTO>> violations =  validator.validate(value);
         // THEN
-        Assertions.assertThat(violations).isEmpty();
+        Assertions.assertThat(violations).isNotEmpty();
+    }
+
+    @Test
+    public void shouldBeInvalid_whenObjectiveIsInvalid() {
+        // GIVEN
+        CVDTO value = new CVDTO();
+        value.setVarious(validVarious);
+        value.setCompetences(validCompetences);
+        value.setExperiences(Collections.singletonList(validExperience));
+        value.setIdentity(validIdentity);
+        value.setObjective(new ObjectiveDTO());
+
+        // WHEN
+        Set<ConstraintViolation<CVDTO>> violations =  validator.validate(value);
+        // THEN
+        Assertions.assertThat(violations).isNotEmpty();
     }
 
     @Test
@@ -94,6 +117,7 @@ public class CVDTOTest {
         value.setVarious(validVarious);
         value.setCompetences(validCompetences);
         value.setIdentity(validIdentity);
+        value.setObjective(validObjective);
 
         // WHEN
         Set<ConstraintViolation<CVDTO>> violations =  validator.validate(value);
@@ -122,6 +146,7 @@ public class CVDTOTest {
         value.setVarious(validVarious);
         value.setCompetences(validCompetences);
         value.setExperiences(Collections.singletonList(validExperience));
+        value.setObjective(validObjective);
 
         // WHEN
         Set<ConstraintViolation<CVDTO>> violations =  validator.validate(value);
@@ -136,6 +161,7 @@ public class CVDTOTest {
         value.setCompetences(validCompetences);
         value.setExperiences(Collections.singletonList(validExperience));
         value.setIdentity(validIdentity);
+        value.setObjective(validObjective);
 
         // WHEN
         Set<ConstraintViolation<CVDTO>> violations =  validator.validate(value);
@@ -151,6 +177,7 @@ public class CVDTOTest {
         value.setCompetences(validCompetences);
         value.setExperiences(new ArrayList<>());
         value.setIdentity(validIdentity);
+        value.setObjective(validObjective);
 
         // WHEN
         Set<ConstraintViolation<CVDTO>> violations =  validator.validate(value);
@@ -166,6 +193,7 @@ public class CVDTOTest {
         value.setCompetences(new CompetencesDTO());
         value.setExperiences(Collections.singletonList(validExperience));
         value.setIdentity(validIdentity);
+        value.setObjective(validObjective);
 
         // WHEN
         Set<ConstraintViolation<CVDTO>> violations =  validator.validate(value);
@@ -181,6 +209,7 @@ public class CVDTOTest {
         value.setCompetences(validCompetences);
         value.setExperiences(Collections.singletonList(validExperience));
         value.setIdentity(new IdentityDTO());
+        value.setObjective(validObjective);
 
         // WHEN
         Set<ConstraintViolation<CVDTO>> violations =  validator.validate(value);
@@ -196,6 +225,7 @@ public class CVDTOTest {
         value.setCompetences(validCompetences);
         value.setExperiences(Collections.singletonList(validExperience));
         value.setIdentity(validIdentity);
+        value.setObjective(validObjective);
 
         // WHEN
         Set<ConstraintViolation<CVDTO>> violations =  validator.validate(value);

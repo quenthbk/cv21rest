@@ -3,6 +3,7 @@ package fr.univ.rouen.cv21rest.dto;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
@@ -12,12 +13,14 @@ import java.util.List;
 @JacksonXmlRootElement(localName = "competences")
 public class CompetencesDTO {
 
+    @ApiModelProperty(notes = "Liste des diplômes")
     @JacksonXmlProperty(localName = "diplôme")
     @JacksonXmlElementWrapper(useWrapping = false)
     @NotEmpty
     @Size(max = 5)
     private List<@Valid DegreeDTO> degrees;
 
+    @ApiModelProperty(notes = "Liste des certifications")
     @JacksonXmlProperty(localName = "certif")
     @JacksonXmlElementWrapper(useWrapping = false)
     private List<@Valid CertificationDTO> certifications;
