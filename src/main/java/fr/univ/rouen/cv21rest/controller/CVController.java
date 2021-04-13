@@ -79,6 +79,7 @@ public class CVController {
     })
     public CVDTO cv(@RequestParam String id) {
         LOGGER.info("GET d'un cv au format xml");
+        System.out.println(service.getById(id));
         return mapper.map(service.getById(id), CVDTO.class);
     }
 
@@ -91,6 +92,7 @@ public class CVController {
     public ResumeDTO resume() {
         // TODO Liste résumée des CV présents dans la base.
         LOGGER.info("GET de tous les CV présents dans la base de donnée");
+        System.out.println(new ResumeDTO(mapList(service.getAll(), CVResumedDTO.class)));
         return new ResumeDTO(mapList(service.getAll(), CVResumedDTO.class));
     }
 

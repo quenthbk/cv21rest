@@ -1,5 +1,6 @@
 package fr.univ.rouen.cv21rest.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
@@ -13,6 +14,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @JacksonXmlRootElement(localName = "cv21:cv21")
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class CVDTO implements Serializable {
     private static final long SerialVersionUID = 1L;
 

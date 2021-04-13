@@ -127,7 +127,7 @@
 								<xs:complexType>
 									<xs:sequence>
 										<xs:element name="datedeb" type="cvdate"/>
-										<xs:element name="datefin" type="cvdate"/>
+										<xs:element name="datefin" type="cvdate" minOccurs="0" maxOccurs="1"/>
 										<xs:element name="titre">
 											<xs:simpleType>
 												<xs:restriction base="xs:string">

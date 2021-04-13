@@ -1,5 +1,7 @@
 package fr.univ.rouen.cv21rest.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import fr.univ.rouen.cv21rest.model.DegreeLevel;
@@ -12,6 +14,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 @JacksonXmlRootElement(localName = "diplôme")
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class DegreeDTO implements Serializable {
 
     @ApiModelProperty(notes = "Le niveau du diplôme", example = "IV")
@@ -21,6 +24,7 @@ public class DegreeDTO implements Serializable {
 
     @ApiModelProperty(notes = "La date d'obtention du diplôme", example = "1995-05-15")
     @JacksonXmlProperty(localName = "date")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @NotNull
     private LocalDate date;
 

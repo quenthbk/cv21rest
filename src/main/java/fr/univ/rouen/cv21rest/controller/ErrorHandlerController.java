@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -26,7 +27,9 @@ public class ErrorHandlerController {
         return buildErrorResponse(e.getMessage(), HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler({InvalidCVException.class, HttpMessageNotReadableException.class})
+    @ExceptionHandler({InvalidCVException.class,
+            HttpMessageNotReadableException.class,
+            MissingServletRequestParameterException.class})
     public ResponseEntity<ErrorResponse> InvalidCVExceptionHandler(Exception e) {
         LOGGER.info(e.getMessage());
         return buildErrorResponse(e.getMessage(), HttpStatus.BAD_REQUEST);
@@ -41,7 +44,7 @@ public class ErrorHandlerController {
     @ExceptionHandler(MongoTimeoutException.class)
     public ResponseEntity<ErrorResponse> MongoTimeoutException(Exception e) {
         LOGGER.error(e.getMessage());
-        return buildErrorResponse("Impossibilité de se connecter à la base de donnée",
+        return buildErrorResponse("Impossibilité de se connecter à la base de données",
                 HttpStatus.REQUEST_TIMEOUT);
     }
 

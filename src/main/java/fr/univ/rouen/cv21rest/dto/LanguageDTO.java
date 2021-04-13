@@ -1,5 +1,6 @@
 package fr.univ.rouen.cv21rest.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import fr.univ.rouen.cv21rest.model.LanguageCertification;
@@ -10,6 +11,7 @@ import io.swagger.annotations.ApiModelProperty;
 import javax.validation.constraints.*;
 
 @JacksonXmlRootElement(localName = "lv")
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class LanguageDTO {
     @ApiModelProperty(notes = "Le nom de la langue", example = "anglais")
     @JacksonXmlProperty(isAttribute = true, localName = "lang")

@@ -6,7 +6,6 @@ public enum ObjectiveRequest {
 
     @JsonProperty("stage")
     INTERNSHIP("stage"),
-
     @JsonProperty("emploi")
     EMPLOYMENT("emploi");
 
@@ -18,5 +17,12 @@ public enum ObjectiveRequest {
 
     public String getValue() {
         return value;
+    }
+
+    @Override
+    public String toString() {
+        return "ObjectiveRequest{" +
+                "value='" + value + '\'' +
+                '}';
     }
 }

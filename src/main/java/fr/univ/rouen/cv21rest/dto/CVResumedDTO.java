@@ -1,15 +1,17 @@
 package fr.univ.rouen.cv21rest.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
 @JacksonXmlRootElement(localName = "cv21")
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class CVResumedDTO {
 
     @JacksonXmlProperty(isAttribute = true)
     private String id;
 
-    @JacksonXmlProperty(localName = "prénom")
+    @JacksonXmlProperty(localName = "prenom")
     private String firstname;
 
     @JacksonXmlProperty(localName = "nom")

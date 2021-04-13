@@ -5,7 +5,7 @@ import org.jetbrains.annotations.NotNull;
 public class Objective {
     private String job;
 
-    private String request;
+    private ObjectiveRequest request;
 
     public String getJob() {
         return job;
@@ -15,11 +15,11 @@ public class Objective {
         this.job = job;
     }
 
-    public String getRequest() {
+    public ObjectiveRequest getRequest() {
         return request;
     }
 
-    public void setRequest(String request) {
+    public void setRequest(ObjectiveRequest request) {
         this.request = request;
     }
 

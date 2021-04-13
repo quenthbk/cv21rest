@@ -1,6 +1,8 @@
 package fr.univ.rouen.cv21rest.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import fr.univ.rouen.cv21rest.validation.Constant;
@@ -12,6 +14,7 @@ import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 @JacksonXmlRootElement(localName = "expe")
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class ExperienceDTO {
 
     @ApiModelProperty(notes = "Le début de l'expérience/formation", example = "1998-02-16")

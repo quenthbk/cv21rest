@@ -1,0 +1,576 @@
+{
+	"info": {
+		"_postman_id": "083c4521-2dc0-4f5f-8260-2cbae46afcf2",
+		"name": "CV_Quentin_Holubeik",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "resume",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/resume",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"resume"
+					]
+				},
+				"description": "Liste des CVs présent en bdd"
+			},
+			"response": []
+		},
+		{
+			"name": "cv",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/cv?id=inconnu",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cv"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "inconnu"
+						}
+					]
+				},
+				"description": "Chercher un cv d'id 'inconnu'"
+			},
+			"response": []
+		},
+		{
+			"name": "htmlcv id  unknown",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<cv21:cv21 xmlns:cv21=\"http://univ.fr/cv21\">\n  <identite>\n    <genre>Mme</genre>\n    <nom>test</nom>\n    <prenom>test</prenom>\n    <!--Optional:-->\n    <tel>0602020202</tel>\n    <!--Optional:-->\n    <mel>testest.com</mel>\n  </identite>\n  <objectif statut=\"stage\">test</objectif>\n  <!--Optional:-->\n  <prof>\n    <!--1 or more repetitions:-->\n    <expe>\n      <datedeb>2013-11-23</datedeb>\n      <datefin>2014-06-09</datefin>\n      <titre>string</titre>\n    </expe>\n  </prof>\n  <competences>\n    <!--1 to 5 repetitions:-->\n    <diplôme niveau=\"IV\">\n      <date>2009-05-16</date>\n      <titre>string</titre>\n      <etab>string</etab>\n    </diplôme>\n    <!--Zero or more repetitions:-->\n    <certif>\n      <datedeb>2003-08-09</datedeb>\n      <!--Optional:-->\n      <datefin>2012-09-13</datefin>\n      <titre>string</titre>\n    </certif>\n  </competences>\n  <divers>\n    <!--1 to 5 repetitions:-->\n    <lv lang=\"anySimpleType\" cert=\"MAT\" nivs=\"C2\" nivi=\"50\">string</lv>\n    <!--0 to 3 repetitions:-->\n    <autre titre=\"string\" comment=\"string\">string</autre>\n  </divers>\n</cv21:cv21>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/htmlcv?id=inconnu",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"htmlcv"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "inconnu"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insert_invalid",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "<cv21:cv21 xmlns:cv21=\"http://univ.fr/cv21\">\n  <identite>\n    <genre>Mme</genre>\n    <nom>test</nom>\n    <prenom>test</prenom>\n    <!--Optional:-->\n    <tel>0602020202</tel>\n    <!--Optional:-->\n    <mel>test@test.com</mel>\n  </identite>\n  <objectif statut=\"stage\">test</objectif>\n  <!--Optional:-->\n  <prof>\n    <!--1 or more repetitions:-->\n    <expe>\n      <datedeb>2013-11-23</datedeb>\n      <datefin>2014-06-09</datefin>\n      <titre>string</titre>\n    </expe>\n  </prof>\n  <competences>\n    <!--1 to 5 repetitions:-->\n    <diplôme niveau=\"IV\">\n      <date>2009-05-16</date>\n      <titre>string</titre>\n      <etab>string</etab>\n    </diplôme>\n    <!--Zero or more repetitions:-->\n    <certif>\n      <datedeb>2003-08-09</datedeb>\n      <!--Optional:-->\n      <datefin>2012-09-13</datefin>\n      <titre>string</titre>\n    </certif>\n  </competences>\n  <divers>\n    <!--1 to 5 repetitions:-->\n    <lv lang=\"anySimpleType\" cert=\"MAT\" nivs=\"C2\" nivi=\"5\">string</lv>\n    <!--0 to 3 repetitions:-->\n    <autre titre=\"string\" comment=\"string\">string</autre>\n  </divers>\n</cv21:cv21>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/insert",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"insert"
+					]
+				},
+				"description": "Insérer un cv ne respectant pas le schema.xsd intégré à l'application"
+			},
+			"response": []
+		},
+		{
+			"name": "delete unknown cv",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/delete?id=inconnu",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"delete"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "inconnu"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update invalid email",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "<cv21:cv21 xmlns:cv21=\"http://univ.fr/cv21\">\n  <identite>\n    <genre>Mme</genre>\n    <nom>test</nom>\n    <prenom>test</prenom>\n    <!--Optional:-->\n    <tel>0602020202</tel>\n    <!--Optional:-->\n    <mel>testest.com</mel>\n  </identite>\n  <objectif statut=\"stage\">test</objectif>\n  <!--Optional:-->\n  <prof>\n    <!--1 or more repetitions:-->\n    <expe>\n      <datedeb>2013-11-23</datedeb>\n      <datefin>2014-06-09</datefin>\n      <titre>string</titre>\n    </expe>\n  </prof>\n  <competences>\n    <!--1 to 5 repetitions:-->\n    <diplôme niveau=\"IV\">\n      <date>2009-05-16</date>\n      <titre>string</titre>\n      <etab>string</etab>\n    </diplôme>\n    <!--Zero or more repetitions:-->\n    <certif>\n      <datedeb>2003-08-09</datedeb>\n      <!--Optional:-->\n      <datefin>2012-09-13</datefin>\n      <titre>string</titre>\n    </certif>\n  </competences>\n  <divers>\n    <!--1 to 5 repetitions:-->\n    <lv lang=\"anySimpleType\" cert=\"MAT\" nivs=\"C2\" nivi=\"50\">string</lv>\n    <!--0 to 3 repetitions:-->\n    <autre titre=\"string\" comment=\"string\">string</autre>\n  </divers>\n</cv21:cv21>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/update?id=inconnu",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"update"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "inconnu"
+						}
+					]
+				},
+				"description": "Sauvegarde avec une email invalide"
+			},
+			"response": []
+		},
+		{
+			"name": "update id unknown",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "<cv21:cv21 xmlns:cv21=\"http://univ.fr/cv21\">\n  <identite>\n    <genre>Mme</genre>\n    <nom>test</nom>\n    <prenom>test</prenom>\n    <!--Optional:-->\n    <tel>0602020202</tel>\n    <!--Optional:-->\n    <mel>test@test.com</mel>\n  </identite>\n  <objectif statut=\"stage\">test</objectif>\n  <!--Optional:-->\n  <prof>\n    <!--1 or more repetitions:-->\n    <expe>\n      <datedeb>2013-11-23</datedeb>\n      <datefin>2014-06-09</datefin>\n      <titre>string</titre>\n    </expe>\n  </prof>\n  <competences>\n    <!--1 to 5 repetitions:-->\n    <diplôme niveau=\"IV\">\n      <date>2009-05-16</date>\n      <titre>string</titre>\n      <etab>string</etab>\n    </diplôme>\n    <!--Zero or more repetitions:-->\n    <certif>\n      <datedeb>2003-08-09</datedeb>\n      <!--Optional:-->\n      <datefin>2012-09-13</datefin>\n      <titre>string</titre>\n    </certif>\n  </competences>\n  <divers>\n    <!--1 to 5 repetitions:-->\n    <lv lang=\"anySimpleType\" cert=\"MAT\" nivs=\"C2\" nivi=\"201\">string</lv>\n    <!--0 to 3 repetitions:-->\n    <autre titre=\"string\" comment=\"string\">string</autre>\n  </divers>\n</cv21:cv21>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/update?id=inconnu",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"update"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "inconnu"
+						}
+					]
+				},
+				"description": "Sauvegarde un CV inconnu en base de donné"
+			},
+			"response": []
+		},
+		{
+			"name": "insert",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "<cv21:cv21 xmlns:cv21=\"http://univ.fr/cv21\">\n  <identite>\n    <genre>Mme</genre>\n    <nom>test</nom>\n    <prenom>test</prenom>\n    <!--Optional:-->\n    <tel>0602020202</tel>\n    <!--Optional:-->\n    <mel>test@test.com</mel>\n  </identite>\n  <objectif statut=\"stage\">test</objectif>\n  <!--Optional:-->\n  <prof>\n    <!--1 or more repetitions:-->\n    <expe>\n      <datedeb>2013-11-23</datedeb>\n      <datefin>2014-06-09</datefin>\n      <titre>string</titre>\n    </expe>\n  </prof>\n  <competences>\n    <!--1 to 5 repetitions:-->\n    <diplôme niveau=\"IV\">\n      <date>2009-05-16</date>\n      <titre>string</titre>\n      <etab>string</etab>\n    </diplôme>\n    <!--Zero or more repetitions:-->\n    <certif>\n      <datedeb>2003-08-09</datedeb>\n      <!--Optional:-->\n      <datefin>2012-09-13</datefin>\n      <titre>string</titre>\n    </certif>\n  </competences>\n  <divers>\n    <!--1 to 5 repetitions:-->\n    <lv lang=\"anySimpleType\" cert=\"MAT\" nivs=\"C2\" nivi=\"201\">string</lv>\n    <!--0 to 3 repetitions:-->\n    <autre titre=\"string\" comment=\"string\">string</autre>\n  </divers>\n</cv21:cv21>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/insert",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"insert"
+					]
+				},
+				"description": "Insérer un CV de test"
+			},
+			"response": []
+		},
+		{
+			"name": "insert_conflict",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "<cv21:cv21 xmlns:cv21=\"http://univ.fr/cv21\">\n  <identite>\n    <genre>Mme</genre>\n    <nom>test</nom>\n    <prenom>test</prenom>\n    <!--Optional:-->\n    <tel>0602020202</tel>\n    <!--Optional:-->\n    <mel>test@test.com</mel>\n  </identite>\n  <objectif statut=\"stage\">test</objectif>\n  <!--Optional:-->\n  <prof>\n    <!--1 or more repetitions:-->\n    <expe>\n      <datedeb>2013-11-23</datedeb>\n      <datefin>2014-06-09</datefin>\n      <titre>string</titre>\n    </expe>\n  </prof>\n  <competences>\n    <!--1 to 5 repetitions:-->\n    <diplôme niveau=\"IV\">\n      <date>2009-05-16</date>\n      <titre>string</titre>\n      <etab>string</etab>\n    </diplôme>\n    <!--Zero or more repetitions:-->\n    <certif>\n      <datedeb>2003-08-09</datedeb>\n      <!--Optional:-->\n      <datefin>2012-09-13</datefin>\n      <titre>string</titre>\n    </certif>\n  </competences>\n  <divers>\n    <!--1 to 5 repetitions:-->\n    <lv lang=\"anySimpleType\" cert=\"MAT\" nivs=\"C2\" nivi=\"201\">string</lv>\n    <!--0 to 3 repetitions:-->\n    <autre titre=\"string\" comment=\"string\">string</autre>\n  </divers>\n</cv21:cv21>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/insert",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"insert"
+					]
+				},
+				"description": "Insérer un cv déjà existant dans la base de donnée"
+			},
+			"response": []
+		},
+		{
+			"name": "insert_2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "<cv21:cv21 xmlns:cv21=\"http://univ.fr/cv21\">\n  <identite>\n    <genre>Mme</genre>\n    <nom>Cat</nom>\n    <prenom>Doe</prenom>\n    <!--Optional:-->\n    <tel>0602020202</tel>\n    <!--Optional:-->\n    <mel>test@test.com</mel>\n  </identite>\n  <objectif statut=\"stage\">test</objectif>\n  <!--Optional:-->\n  <prof>\n    <!--1 or more repetitions:-->\n    <expe>\n      <datedeb>2013-11-23</datedeb>\n      <datefin>2014-06-09</datefin>\n      <titre>Exemple d'experience</titre>\n    </expe>\n        <expe>\n      <datedeb>2014-11-23</datedeb>\n      <datefin>2015-06-09</datefin>\n      <titre>Exemple d'experience 2</titre>\n    </expe>\n  </prof>\n  <competences>\n    <!--1 to 5 repetitions:-->\n    <diplôme niveau=\"V\">\n      <date>2009-05-16</date>\n      <titre>string</titre>\n      <etab>string</etab>\n    </diplôme>\n        <diplôme niveau=\"II\">\n      <date>2009-05-16</date>\n      <titre>Format</titre>\n      <etab>Exemple detablissement</etab>\n    </diplôme>\n    <!--Zero or more repetitions:-->\n    <certif>\n      <datedeb>2003-08-09</datedeb>\n      <!--Optional:-->\n      <datefin>2012-09-13</datefin>\n      <titre>string</titre>\n    </certif>\n  </competences>\n  <divers>\n    <!--1 to 5 repetitions:-->\n    <lv lang=\"Fr\" cert=\"MAT\" nivs=\"C2\" />\n    <lv lang=\"En\" cert=\"CLES\" nivs=\"B2\" nivi=\"890\"/>\n    <!--0 to 3 repetitions:-->\n  </divers>\n</cv21:cv21>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/insert",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"insert"
+					]
+				},
+				"description": "Insérer avec des informations différentes"
+			},
+			"response": []
+		},
+		{
+			"name": "insert_3",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "<cv21:cv21 xmlns:cv21=\"http://univ.fr/cv21\">\n  <identite>\n    <genre>Mme</genre>\n    <nom>Cat</nom>\n    <prenom>Doe</prenom>\n    <!--Optional:-->\n    <tel>0602020202</tel>\n    <!--Optional:-->\n    <mel>test@test.com</mel>\n  </identite>\n  <objectif statut=\"stage\">test</objectif>\n  <!--Optional:-->\n  <prof>\n    <!--1 or more repetitions:-->\n    <expe>\n      <datedeb>2013-11-23</datedeb>\n      <datefin>2014-06-09</datefin>\n      <titre>Exemple d'experience</titre>\n    </expe>\n        <expe>\n      <datedeb>2014-11-23</datedeb>\n      <datefin>2015-06-09</datefin>\n      <titre>Exemple d'experience 2</titre>\n    </expe>\n  </prof>\n  <competences>\n    <!--1 to 5 repetitions:-->\n    <diplôme niveau=\"V\">\n      <date>2009-05-16</date>\n      <titre>string</titre>\n      <etab>string</etab>\n    </diplôme>\n        <diplôme niveau=\"II\">\n      <date>2009-05-16</date>\n      <titre>Format</titre>\n      <etab>Exemple detablissement</etab>\n    </diplôme>\n    <!--Zero or more repetitions:-->\n    <certif>\n      <datedeb>2003-08-09</datedeb>\n      <!--Optional:-->\n      <datefin>2012-09-13</datefin>\n      <titre>string</titre>\n    </certif>\n  </competences>\n  <divers>\n    <!--1 to 5 repetitions:-->\n    <lv lang=\"Fr\" cert=\"MAT\" nivs=\"C2\" />\n    <lv lang=\"En\" cert=\"CLES\" nivs=\"B2\" nivi=\"890\"/>\n    <!--0 to 3 repetitions:-->\n  </divers>\n</cv21:cv21>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/insert",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"insert"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cv with known id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/cv?id=6075e8f1b46399058e01efed",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cv"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "6075e8f1b46399058e01efed"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "resume",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/resume",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"resume"
+					]
+				},
+				"description": "Récupération de tous les CV"
+			},
+			"response": []
+		},
+		{
+			"name": "update id known but conflict",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "<cv21:cv21 xmlns:cv21=\"http://univ.fr/cv21\">\n  <identite>\n    <genre>Mme</genre>\n    <nom>test</nom>\n    <prenom>test</prenom>\n    <!--Optional:-->\n    <tel>0602020202</tel>\n    <!--Optional:-->\n    <mel>test@test.com</mel>\n  </identite>\n  <objectif statut=\"stage\">test</objectif>\n  <!--Optional:-->\n  <prof>\n    <!--1 or more repetitions:-->\n    <expe>\n      <datedeb>2013-11-23</datedeb>\n      <datefin>2014-06-09</datefin>\n      <titre>string</titre>\n    </expe>\n  </prof>\n  <competences>\n    <!--1 to 5 repetitions:-->\n    <diplôme niveau=\"IV\">\n      <date>2009-05-16</date>\n      <titre>string</titre>\n      <etab>string</etab>\n    </diplôme>\n    <!--Zero or more repetitions:-->\n    <certif>\n      <datedeb>2003-08-09</datedeb>\n      <!--Optional:-->\n      <datefin>2012-09-13</datefin>\n      <titre>string</titre>\n    </certif>\n  </competences>\n  <divers>\n    <!--1 to 5 repetitions:-->\n    <lv lang=\"anySimpleType\" cert=\"MAT\" nivs=\"C2\" nivi=\"201\">string</lv>\n    <!--0 to 3 repetitions:-->\n    <autre titre=\"string\" comment=\"string\">string</autre>\n  </divers>\n</cv21:cv21>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/update?id=6075fa51b729f8549e4ceb5b",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"update"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "6075fa51b729f8549e4ceb5b"
+						}
+					]
+				},
+				"description": "Un CV est déjà enregistré portant ce nom"
+			},
+			"response": []
+		},
+		{
+			"name": "update id known",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "<cv21:cv21 xmlns:cv21=\"http://univ.fr/cv21\">\n  <identite>\n    <genre>Mme</genre>\n    <nom>test</nom>\n    <prenom>test</prenom>\n    <!--Optional:-->\n    <tel>0602020202</tel>\n    <!--Optional:-->\n    <mel>test@test.com</mel>\n  </identite>\n  <objectif statut=\"stage\">test</objectif>\n  <!--Optional:-->\n  <prof>\n    <!--1 or more repetitions:-->\n    <expe>\n      <datedeb>2013-11-23</datedeb>\n      <datefin>2014-06-09</datefin>\n      <titre>string</titre>\n    </expe>\n  </prof>\n  <competences>\n    <!--1 to 5 repetitions:-->\n    <diplôme niveau=\"IV\">\n      <date>2009-05-16</date>\n      <titre>string</titre>\n      <etab>string</etab>\n    </diplôme>\n    <!--Zero or more repetitions:-->\n    <certif>\n      <datedeb>2003-08-09</datedeb>\n      <!--Optional:-->\n      <datefin>2012-09-13</datefin>\n      <titre>string</titre>\n    </certif>\n  </competences>\n  <divers>\n    <!--1 to 5 repetitions:-->\n    <lv lang=\"anySimpleType\" cert=\"MAT\" nivs=\"C2\" nivi=\"201\">string</lv>\n    <!--0 to 3 repetitions:-->\n    <autre titre=\"string\" comment=\"string\">string</autre>\n  </divers>\n</cv21:cv21>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/update?id=inconnu",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"update"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "inconnu"
+						}
+					]
+				},
+				"description": "Update avec une id connue"
+			},
+			"response": []
+		},
+		{
+			"name": "htmlcv id  known",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<cv21:cv21 xmlns:cv21=\"http://univ.fr/cv21\">\n  <identite>\n    <genre>Mme</genre>\n    <nom>test</nom>\n    <prenom>test</prenom>\n    <!--Optional:-->\n    <tel>0602020202</tel>\n    <!--Optional:-->\n    <mel>testest.com</mel>\n  </identite>\n  <objectif statut=\"stage\">test</objectif>\n  <!--Optional:-->\n  <prof>\n    <!--1 or more repetitions:-->\n    <expe>\n      <datedeb>2013-11-23</datedeb>\n      <datefin>2014-06-09</datefin>\n      <titre>string</titre>\n    </expe>\n  </prof>\n  <competences>\n    <!--1 to 5 repetitions:-->\n    <diplôme niveau=\"IV\">\n      <date>2009-05-16</date>\n      <titre>string</titre>\n      <etab>string</etab>\n    </diplôme>\n    <!--Zero or more repetitions:-->\n    <certif>\n      <datedeb>2003-08-09</datedeb>\n      <!--Optional:-->\n      <datefin>2012-09-13</datefin>\n      <titre>string</titre>\n    </certif>\n  </competences>\n  <divers>\n    <!--1 to 5 repetitions:-->\n    <lv lang=\"anySimpleType\" cert=\"MAT\" nivs=\"C2\" nivi=\"50\">string</lv>\n    <!--0 to 3 repetitions:-->\n    <autre titre=\"string\" comment=\"string\">string</autre>\n  </divers>\n</cv21:cv21>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/htmlcv?id=inconnu",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"htmlcv"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "inconnu"
+						}
+					]
+				},
+				"description": "Vérification d'un cv html"
+			},
+			"response": []
+		},
+		{
+			"name": "cv with known id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/cv?id=6075e8f1b46399058e01efed",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cv"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "6075e8f1b46399058e01efed"
+						}
+					]
+				},
+				"description": "Vérification du cv si mis à jour"
+			},
+			"response": []
+		},
+		{
+			"name": "delete known cv",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/delete?id=inconnu",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"delete"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "inconnu"
+						}
+					]
+				},
+				"description": "Supression d'un cv"
+			},
+			"response": []
+		},
+		{
+			"name": "cv with known id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/cv?id=6075e8f1b46399058e01efed",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cv"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "6075e8f1b46399058e01efed"
+						}
+					]
+				},
+				"description": "Pour vérifier la suppression "
+			},
+			"response": []
+		},
+		{
+			"name": "resume",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/resume",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"resume"
+					]
+				},
+				"description": "Dernière vérification"
+			},
+			"response": []
+		}
+	]
+}

@@ -74,13 +74,31 @@ public class CVServiceImpl implements CVService {
 
     @Override
     public CV update(String id, CV cv) {
-        if (repository.existsById(id)) {
-            cv.setId(id);
-            return repository.save(cv);
+        if (! repository.existsById(id)) {
+            throw new CVNotFoundException("Le CV est introuvable");
+        }
+
+        // Requêtes permettant de rechercher par critère en retirant l'id
+        Query query = new Query();
+        query.addCriteria(
+                Criteria.where("identity.firstname").is(cv.getIdentity().getFirstname())
+                        .and("identity.lastname").is(cv.getIdentity().getLastname())
+                        .and("objective.job").is(cv.getObjective().getJob())
+                        .and("objective.request").is(cv.getObjective().getRequest())
+                        .and("id").nin(id)
+        );
+        List<CV> cvs = mongo.find(query, CV.class);
+
+        if (! cvs.isEmpty()) {
+            throw new CVAlreadyExistsException(
+                    "Il existe déjà un cv comme celui-ci à l'id : " + cvs.get(0).getId());
         }
 
         sortCVItem(cv);
-        throw new CVNotFoundException("Le CV est introuvable");
+
+        cv.setId(id);
+        return repository.save(cv);
+
     }
 
     @Override

@@ -1,5 +1,6 @@
 package fr.univ.rouen.cv21rest.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlText;
@@ -12,6 +13,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @JacksonXmlRootElement(localName = "objectif")
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class ObjectiveDTO {
 
     @ApiModelProperty(notes = "Le poste visé", example = "DevOps")

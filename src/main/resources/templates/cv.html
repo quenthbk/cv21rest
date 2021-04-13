@@ -8,7 +8,9 @@
 <header>
     <div class="objective" th:if="${objective != null}">
         <h1 th:text="${objective.job}">Développement Logiciel</h1>
-        <p th:text="${objective.request}">Demande de stage</p>
+        <p>
+            Demande d<span th:switch="${objective.request.value}"><span th:case="'emploi'">'</span><span th:case="*">e </span></span><span th:text="${objective.request.value}">stage</span>
+        </p>
     </div>
     <h2><span th:text="${identity.gender.value}">M</span>.
         <span th:text="${identity.lastname}">NOM</span>

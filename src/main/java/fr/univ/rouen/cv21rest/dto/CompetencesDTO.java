@@ -1,5 +1,6 @@
 package fr.univ.rouen.cv21rest.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
@@ -11,6 +12,7 @@ import javax.validation.constraints.Size;
 import java.util.List;
 
 @JacksonXmlRootElement(localName = "competences")
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class CompetencesDTO {
 
     @ApiModelProperty(notes = "Liste des diplômes")

@@ -1,6 +1,7 @@
 package fr.univ.rouen.cv21rest.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
@@ -12,6 +13,7 @@ import javax.validation.constraints.Size;
 import java.util.List;
 
 @JacksonXmlRootElement(localName = "divers")
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class VariousDTO {
 
     @ApiModelProperty(notes = "La liste dans langues associées au CV")
