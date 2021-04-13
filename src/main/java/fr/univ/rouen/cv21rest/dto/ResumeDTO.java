@@ -13,13 +13,13 @@ public class ResumeDTO {
     @ApiModelProperty(notes = "Une liste de CV")
     @JacksonXmlProperty(localName = "cv21")
     @JacksonXmlElementWrapper(useWrapping = false)
-    private final List<CVDTO> cvs;
+    private final List<CVResumedDTO> cvs;
 
-    public ResumeDTO(List<CVDTO> cvs) {
+    public ResumeDTO(List<CVResumedDTO> cvs) {
         this.cvs = cvs;
     }
 
-    public List<CVDTO> getCvs() {
+    public List<CVResumedDTO> getCvs() {
         return cvs;
     }
 

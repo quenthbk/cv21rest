@@ -50,6 +50,22 @@ public class ModelMapperConfig {
                     CV::getLanguages,
                     (dest, v) -> dest.getVarious().setLanguages((List<LanguageDTO>) v)));
 
+        // CV to CvResumeDTO
+
+        modelMapper.typeMap(CV.class, CVResumedDTO.class)
+                // certifications -> Competences::certifications
+                .addMappings(mapper -> mapper.map(src ->
+                        src.getIdentity().getFirstname(),
+                        CVResumedDTO::setFirstname))
+                // degrees -> Competences::degrees
+                .addMappings(mapper -> mapper.map(src ->
+                                src.getIdentity().getLastname(),
+                        CVResumedDTO::setLastname))
+                .addMappings(mapper -> mapper.map(CV::getLastDegree,
+                        CVResumedDTO::setDegree));
+
+
+
         return modelMapper;
     }
 }

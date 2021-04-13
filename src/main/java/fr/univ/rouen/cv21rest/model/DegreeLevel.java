@@ -1,5 +1,5 @@
 package fr.univ.rouen.cv21rest.model;
 
 public enum DegreeLevel {
-    I, II, III, IV, V
+    VI, V, IV, III, II, I
 }

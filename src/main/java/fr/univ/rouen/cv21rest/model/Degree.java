@@ -1,8 +1,10 @@
 package fr.univ.rouen.cv21rest.model;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.time.LocalDate;
 
-public class Degree {
+public class Degree implements Comparable<Degree> {
     private DegreeLevel level;
 
     private LocalDate date;
@@ -51,5 +53,10 @@ public class Degree {
                 ", title='" + title + '\'' +
                 ", institution='" + institution + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(@NotNull Degree degree) {
+        return level.compareTo(degree.level);
     }
 }

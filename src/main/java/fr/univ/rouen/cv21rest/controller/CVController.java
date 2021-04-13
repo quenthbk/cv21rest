@@ -1,6 +1,7 @@
 package fr.univ.rouen.cv21rest.controller;
 
 import fr.univ.rouen.cv21rest.dto.CVDTO;
+import fr.univ.rouen.cv21rest.dto.CVResumedDTO;
 import fr.univ.rouen.cv21rest.dto.EntityResponseDTO;
 import fr.univ.rouen.cv21rest.dto.ResumeDTO;
 import fr.univ.rouen.cv21rest.exception.InvalidCVException;
@@ -90,7 +91,7 @@ public class CVController {
     public ResumeDTO resume() {
         // TODO Liste résumée des CV présents dans la base.
         LOGGER.info("GET de tous les CV présents dans la base de donnée");
-        return new ResumeDTO(mapList(service.getAll(), CVDTO.class));
+        return new ResumeDTO(mapList(service.getAll(), CVResumedDTO.class));
     }
 
     // --------------------------------------------------------------------

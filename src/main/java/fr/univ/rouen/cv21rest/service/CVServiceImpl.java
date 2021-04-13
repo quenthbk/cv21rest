@@ -3,6 +3,7 @@ package fr.univ.rouen.cv21rest.service;
 import fr.univ.rouen.cv21rest.exception.CVAlreadyExistsException;
 import fr.univ.rouen.cv21rest.exception.CVNotFoundException;
 import fr.univ.rouen.cv21rest.model.CV;
+import fr.univ.rouen.cv21rest.model.Degree;
 import fr.univ.rouen.cv21rest.repository.CVRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
@@ -10,6 +11,8 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,7 +32,11 @@ public class CVServiceImpl implements CVService {
 
     @Override
     public List<CV> getAll() {
-        return repository.findAll();
+        List<CV> cvs = repository.findAll();
+        for (CV cv : cvs) {
+            sortCVItem(cv);
+        }
+        return cvs;
     }
 
     @Override
@@ -38,6 +45,8 @@ public class CVServiceImpl implements CVService {
         if (cv.isEmpty()) {
             throw new CVNotFoundException("Le CV est introuvable");
         }
+
+        sortCVItem(cv.get());
         return cv.get();
     }
 
@@ -59,6 +68,7 @@ public class CVServiceImpl implements CVService {
                     "Ce CV existe déjà à l'id : " + cvs.get(0).getId());
         }
 
+        sortCVItem(cv);
         return repository.save(cv);
     }
 
@@ -68,6 +78,8 @@ public class CVServiceImpl implements CVService {
             cv.setId(id);
             return repository.save(cv);
         }
+
+        sortCVItem(cv);
         throw new CVNotFoundException("Le CV est introuvable");
     }
 
@@ -77,5 +89,10 @@ public class CVServiceImpl implements CVService {
             throw new CVNotFoundException("Le CV est introuvable");
         }
         repository.deleteById(id);
+    }
+
+    // Petite méthode pour trier les éléments du cv
+    private static void sortCVItem(CV cv) {
+        cv.getDegrees().sort(Degree::compareTo);
     }
 }

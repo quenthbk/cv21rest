@@ -22,6 +22,10 @@ public class CV {
 
     private List<Other> others;
 
+    // --------------------------------------------------------------- //
+    //                        ACCESSEURS                               //
+    // --------------------------------------------------------------- //
+
     public String getId() {
         return id;
     }
@@ -84,6 +88,14 @@ public class CV {
 
     public void setCertifications(List<Experience> certifications) {
         this.certifications = certifications;
+    }
+
+    // ------------------------------------------------------ //
+    //                       COMMANDES                        //
+    // ------------------------------------------------------ //
+
+    public Degree getLastDegree() {
+        return degrees.isEmpty() ? null : degrees.get(0);
     }
 
     @Override
