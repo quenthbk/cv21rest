@@ -1,0 +1,8 @@
+.cv-resume {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.cv-resume li {
+    border: rgb(203, 221, 236) solid 1px;
+}

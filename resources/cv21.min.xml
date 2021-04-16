@@ -1,0 +1,30 @@
+<cv21:cv21 xmlns:cv21="http://univ.fr/cv21">
+  <identite>
+    <genre>Mme</genre>
+    <nom>Doe</nom>
+    <prenom>John</prenom>
+  </identite>
+  <objectif statut="emploi">DevOps</objectif>
+  <!--Optional:-->
+  <prof>
+    <!--1 or more repetitions:-->
+    <expe>
+      <datedeb>2013-11-23</datedeb>
+      <!--Optional:-->
+      <titre>string</titre>
+    </expe>
+  </prof>
+  <competences>
+    <!--1 to 5 repetitions:-->
+    <diplôme niveau="IV">
+      <date>2009-05-16</date>
+      <titre>string</titre>
+      <etab>DumDum</etab>
+    </diplôme>
+  </competences>
+  <divers>
+    <!--1 to 5 repetitions:-->
+    <lv lang="Fr" cert="MAT"/>
+    <!--0 to 3 repetitions:-->
+  </divers>
+</cv21:cv21>

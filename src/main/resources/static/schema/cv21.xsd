@@ -14,7 +14,7 @@
 	</xs:simpleType>
 	<xs:simpleType name="tel">
 		<xs:restriction base="xs:string">
-			<xs:pattern value="[0-9]{10}"/>
+			<xs:pattern value="[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="mel">
