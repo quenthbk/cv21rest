@@ -11,9 +11,6 @@ function CVResume(props) {
       {props.firstname} {props.lastname}
     </ListGroup.Item>
     <ListGroup.Item as="li">{props.objective.name} : ({props.objective.attributes.statut}) {props.objective.value}</ListGroup.Item>
-    <ListGroup.Item as="li" disabled>
-        (Diplôme indisponible à cause du caractère 'ô')
-    </ListGroup.Item>
   </ListGroup></Link>
 }
 
