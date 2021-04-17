@@ -4,21 +4,18 @@ import fr.univ.rouen.cv21rest.model.DegreeLevel;
 import fr.univ.rouen.cv21rest.validation.Constant;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
 import javax.validation.Validator;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Set;
 
-@SpringBootTest
 public class CompetencesDTOTest {
 
-    @Autowired
-    private Validator validator;
+    private final Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
 
     private final DegreeDTO degreeValid = new DegreeDTO();
 

@@ -3,19 +3,16 @@ package fr.univ.rouen.cv21rest.dto;
 import fr.univ.rouen.cv21rest.model.*;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
 import javax.validation.Validator;
 import java.time.LocalDate;
 import java.util.*;
 
-@SpringBootTest
 public class CVDTOTest {
 
-    @Autowired
-    private Validator validator;
+    private final Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
 
     private final IdentityDTO validIdentity;
 

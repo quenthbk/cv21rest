@@ -4,20 +4,18 @@ import fr.univ.rouen.cv21rest.model.LanguageCertification;
 import fr.univ.rouen.cv21rest.model.LanguageLevel;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
 import javax.validation.Validator;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Set;
 
-@SpringBootTest
+
 public class VariousDTOTest {
 
-    @Autowired
-    private Validator validator;
+    private final Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
 
     private final OtherDTO otherValid = new OtherDTO();
 
