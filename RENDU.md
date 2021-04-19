@@ -44,6 +44,10 @@ La page d'aide redirige automatiquement vers l'uri de la documentation SpringFox
 
 - **BUG**: Cependant Swagger via SpringFox gère mal le format XML et affiche des exemples du modèle non conforme au CV21.
 
+## Notice de déploiement
+
+Une notice de déploiement est intégré à chaque projet dans le fichier README.md
+
 ## Structure du modèle CV21
 
 La structure de modèle CV21 est exposée avec des objet de transfère de donnée. Ils reprennent la configuration CV21 afin de correctement formater le format XML qui arrive en entrée. Une fois validé, ces DTO sont converti dans un model plus approprié.

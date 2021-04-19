@@ -7,6 +7,7 @@
 - Pour développer vous aurez besoin de votre éditeur préféré (intelliJ ou Eclipse de préférence)
 - Le schema correspondant à la norme CV21 est situé dans le dossier `src/main/resources/static/schema`
 - Quelques fichier xml de tests sont présent dans le dossier `src/resources`
+- Déployez la base de donné avec docker en éxécutant le script `bash database/db_run.sh`
 
 ### Deploiement en local
 
