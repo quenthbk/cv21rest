@@ -6,7 +6,7 @@
 
 - Pour développer vous aurez besoin de votre éditeur préféré (intelliJ ou Eclipse de préférence)
 - Le schema correspondant à la norme CV21 est situé dans le dossier `src/main/resources/static/schema`
-- Quelques fichier xml de tests sont présent dans le dossier `src/main/resources/static`
+- Quelques fichier xml de tests sont présent dans le dossier `src/resources`
 
 ### Deploiement en local
 
@@ -17,22 +17,7 @@
 - L'identifiant de la base de donnée par défaut est `root`
 - Le mot de passe de la base de donnée par défaut est `root`
 
-## WebApp (Le Client)
+### Deploiement production
 
-### Développement sur l'api clevercloud
-
-- Un client React est fourni dans le dossier `webapp`
-- Placez vous à la racine du dossier `webapp`
-- Éxecutez votre environnement de développement avec `npm run start`, le serveur par défaut npm tournera sous le port `3000`
-- Par défaut l'adresse de l'api est réglé sur `http://app-cd3c9847-3e85-4c3f-83bb-1f1fae7844d2.cleverapps.io/`
-
-### Développement sur l'api en local
-- Éxecutez votre environnement de développement avec `npm run local`, le serveur par défaut npm tournera sous le port `3000`
-- Par défaut l'adresse de l'api est réglé sur `localhost:8080` (adresse à modifier dans package.json)
-
-### Deploiement en production
-
-- Placez vous à la racine du dossier `webapp`
-- `npm build` pour construire l'application pour la production
-- Un dossier `build` sura alors créé contenant l'application construite
-- L'application peut maintenant fonctionner avec un serveur applicatif
+- La mise en production se fait par l'intermédiaire d'un git push sur la branche master
+- Un profil clevercloud a été défini dans spring boot
