@@ -6,9 +6,9 @@ import { Form, Button, Alert } from 'react-bootstrap'
 
 /**
  * Composant représentant le formulaire d'un CV
- * 
+ *
  * @param value Le CV au format XML
- * @param update Indique si le formulaire doit mettre à jour le CV (true) 
+ * @param update Indique si le formulaire doit mettre à jour le CV (true)
  *    ou le créer (false)
  */
 class CVForm extends React.Component {
@@ -66,8 +66,8 @@ class CVForm extends React.Component {
         var message = "Une erreur s'est produite"
         try {
           var xml = new XMLParser().parseFromString(response);
-          var message = xml.getElementsByTagName("message")[0]
-          
+          message = xml.getElementsByTagName("message")[0]
+
         } catch (e) {
           console.error(e)
         }

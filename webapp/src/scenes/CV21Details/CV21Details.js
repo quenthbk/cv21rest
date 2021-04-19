@@ -33,9 +33,8 @@ class CV21Details extends React.Component {
         this.setState({ cvxml: res.data, found: true })
       })
       .catch(e => {
-        console.log(e.response)
         var message
-        if (e.response.status === 404) {
+        if (e.response !== undefined && e.response.status === 404) {
           message =  "Le CV n'a pas été trouvé"
         } else {
           message = "Une erreur est survenue"
