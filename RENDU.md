@@ -2,7 +2,8 @@
 
 - Quentin Holubeik
 - email : `quentin.holubeik@etu.univ-rouen.fr`
-- Depôt GitHub : `https://github.com/quentinholubeik/cv21rest.git`
+- Depôt GitHub Api : `https://github.com/quentinholubeik/cv21rest.git`
+- Depôt GitHub Client : `https://github.com/quentinholubeik/cv21-webapp`
 - Instance Clevercloud : `http://app-cd3c9847-3e85-4c3f-83bb-1f1fae7844d2.cleverapps.io/`
 
 ## Intruduction
