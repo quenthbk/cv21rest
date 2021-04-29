@@ -33,25 +33,25 @@ Permet d'avoir une documentation convenable sur les routes de l'api. Elle permet
 Permet de préparer le terrain pour fournir les tests adéquates.
 
 ### Le Client
-Le client quand à lui est développer en JavaScript avec le framework React Js et BootStrap.
+Le client quand à lui est développé en JavaScript avec le framework React Js et BootStrap.
 
 ### Le gestionnaire de Base de Donnée
 
-Pour le gestionnaire de la base de donnée j'ai préféré utiliser mongodb plutôt qu'une autre. Mongo est très souple et la partie NO-SQL correspond bien au besoin de "bibliothèque" et d'"archivage" de donnée sans utiliser de relation.
+Pour le gestionnaire de la base de données j'ai préféré utiliser mongodb plutôt qu'une autre technologie. Mongo est très souple et la partie NO-SQL correspond parfaitement au besoin de "bibliothèque" et d'"archivage" de donnée sans utiliser de quelconques relations. Aucune table n'est donc fournie.
 
 ### La Documentation via Springfox
 
-La page d'aide redirige automatiquement vers l'uri de la documentation SpringFox. Toutes les routes y sont spécifiée ainsi que les modèles DTO. Une description de chaque route et des éléments données en paramètres y sont spécifié (ainsi que les critères de validation).
+La page d'aide redirige automatiquement vers l'uri de la documentation Swagger. Toutes les routes y sont spécifiées ainsi que les modèles DTO. Une description de chaque route et des éléments données en paramètres y sont spécifiés (ainsi que les critères de validation).
 
 - **BUG**: Cependant Swagger via SpringFox gère mal le format XML et affiche des exemples du modèle non conforme au CV21.
 
 ## Notice de déploiement
 
-Une notice de déploiement est intégré à chaque projet dans le fichier README.md
+Une notice de déploiement est intégrée pour chaque projet dans le fichier README.md
 
 ## Structure du modèle CV21
 
-La structure de modèle CV21 est exposée avec des objet de transfère de donnée. Ils reprennent la configuration CV21 afin de correctement formater le format XML qui arrive en entrée. Une fois validé, ces DTO sont converti dans un model plus approprié.
+La structure de modèle CV21 est exposée avec des objets de transfères de données. Ils reprennent la configuration CV21 afin de correctement formater le format XML qui arrive en entrée. Une fois validé, ces DTO sont convertis dans un model plus approprié.
 
 ## Validation xsd
 
@@ -60,12 +60,12 @@ Le flux d'entré est validé avec SAXParser. Avant de pouvoir l'utilisé le pars
 ## Gestion des erreurs et des routes
 
 Les erreurs sont attrapées par le Controller Advice défini dans le package `fr.univ.rouen.cv21rest.controller`.
-Les routes concernant le CV sont défini dans le CVController. Les routes propre à l'application sont définie dans HomeController.
+Les routes concernant le CV sont définies dans le CVController. Les routes propre à l'application sont définies dans HomeController.
 
 ## Et Après
 
-- La sécurité doit être mise en place pour accéder à l'application. Spring Boot Security permet d'effectuer ce cheminement. Pour le développement à venir il est possible d'utiliser les JWT token afin de sécuriser cela. Il est aussi possible d'utiliser un autre service (KeyCloak) qui permet le référencement des utilisateurs et la validation des token à la place du service Rest déjà existant.
+- La sécurité doit être mise en place pour accéder à l'application. Spring Boot Security permet d'effectuer ce cheminement. Pour le développement à venir il est possible d'utiliser les JWT token afin de sécuriser cela. Il est aussi possible d'utiliser un autre service (KeyCloak) qui permet le référencement des utilisateurs et la validation des token à la place du service Rest déjà existant. Mais cela serait plus rapport avec la matière "Architecture Distribuée"
 
-- Les tests peuvent être développés avec junit5. Quelques tests ont été écris mais il en manque une grande partie.
+- Les tests peuvent être développés avec junit5. Quelques tests ont été écris pour valider quelques comportements.
 
-- La gestion des erreurs est parciellement développée.
+- La gestion des erreurs est parciellement développée et peut être améliorée.
