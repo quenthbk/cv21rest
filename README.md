@@ -23,4 +23,4 @@
 ### Deploiement production
 
 - La mise en production se fait par l'intermédiaire d'un git push sur la branche master
-- Un profil clevercloud a été défini dans spring boot
+- Un profil clevercloud a été défini dans spring boot 
